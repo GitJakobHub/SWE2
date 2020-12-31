@@ -18,7 +18,7 @@
  */
 
 import { BASE_URI, BUECHER_PATH_REST } from '../../shared';
-import type { BuchArt, BuchServer, Verlag } from './buch';
+import type { BuchArt, BuchServer, Verlag } from './film';
 import { FindError, RemoveError, SaveError, UpdateError } from './errors';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
@@ -28,7 +28,7 @@ import {
     HttpResponse,
 } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { Buch } from './buch';
+import { Buch } from './film';
 import type { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import type { Observable } from 'rxjs';

@@ -15,22 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import type { BuchArt } from '../../shared/buch';
 import { Component } from '@angular/core';
-import { fadeIn } from '../../../shared';
+
+import type { Verlag } from '../../shared/film';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-suche-art</code>
+ * Komponente f&uuml;r das Tag <code>hs-suche-verlag</code>
  */
 @Component({
-    selector: 'hs-suche-art',
-    templateUrl: './suche-art.component.html',
-    animations: [fadeIn],
+    selector: 'hs-suche-verlag',
+    templateUrl: './suche-verlag.component.html',
 })
-export class SucheArtComponent {
-    art: BuchArt | '' = '';
+export class SucheVerlagComponent {
+    verlag: Verlag | '' = '';
 
     constructor() {
-        console.log('SucheArtComponent.constructor()');
+        console.log('SucheVerlagComponent.constructor()');
     }
 }

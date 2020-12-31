@@ -11,26 +11,26 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * You should have received a copy oSf the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, Input } from '@angular/core';
-import type { BuchArt } from '../../shared/buch';
-import type { OnInit } from '@angular/core';
+import type { BuchArt } from '../../shared/film';
+import { Component } from '@angular/core';
+import { fadeIn } from '../../../shared';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-art</code>
+ * Komponente f&uuml;r das Tag <code>hs-suche-art</code>
  */
 @Component({
-    selector: 'hs-details-art',
-    templateUrl: './details-art.component.html',
+    selector: 'hs-suche-art',
+    templateUrl: './suche-art.component.html',
+    animations: [fadeIn],
 })
-export class DetailsArtComponent implements OnInit {
-    @Input()
-    art!: BuchArt;
+export class SucheArtComponent {
+    art: BuchArt | '' = '';
 
-    ngOnInit() {
-        console.log(`DetailsArtComponent.art=${this.art}`);
+    constructor() {
+        console.log('SucheArtComponent.constructor()');
     }
 }

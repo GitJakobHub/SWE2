@@ -16,21 +16,21 @@
  */
 
 import { Component, Input } from '@angular/core';
+import type { BuchArt } from '../../shared/film';
 import type { OnInit } from '@angular/core';
-import type { Verlag } from '../../shared/buch';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-verlag</code>
+ * Komponente f&uuml;r das Tag <code>hs-details-art</code>
  */
 @Component({
-    selector: 'hs-details-verlag',
-    templateUrl: './details-verlag.component.html',
+    selector: 'hs-details-art',
+    templateUrl: './details-art.component.html',
 })
-export class DetailsVerlagComponent implements OnInit {
+export class DetailsArtComponent implements OnInit {
     @Input()
-    verlag: Verlag | undefined | '';
+    art!: BuchArt;
 
     ngOnInit() {
-        console.log(`DetailsVerlagComponent.verlag=${this.verlag}`);
+        console.log(`DetailsArtComponent.art=${this.art}`);
     }
 }

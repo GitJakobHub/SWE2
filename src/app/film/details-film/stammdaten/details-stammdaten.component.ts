@@ -16,7 +16,7 @@
  */
 
 import { Component, Input } from '@angular/core';
-import type { Buch } from '../../shared/buch';
+import type { Buch } from '../../shared/film';
 import type { OnInit } from '@angular/core';
 
 /**

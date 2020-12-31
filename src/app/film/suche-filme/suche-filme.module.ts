@@ -16,7 +16,7 @@
  */
 
 import { NgModule } from '@angular/core';
-import { SucheBuecherComponent } from './suche-buecher.component';
+import { SucheBuecherComponent } from './suche-filme.component';
 import { SuchergebnisModule } from './suchergebnis/suchergebnis.module';
 import { SuchformularModule } from './suchformular/suchformular.module';
 import { Title } from '@angular/platform-browser';
