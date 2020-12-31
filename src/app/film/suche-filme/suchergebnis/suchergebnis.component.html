@@ -24,8 +24,8 @@
   <ng-template #suchergebnis>
     <div
       class="card"
-      aria-label="Gefundene Buecher"
-      *ngIf="buecher.length; else showErrorMsg"
+      aria-label="Gefundene Filme"
+      *ngIf="filme.length; else showErrorMsg"
     >
       <div class="card-header">
         <i class="material-icons">folder_open</i>
@@ -55,7 +55,7 @@
             <!-- Template Binding: ngFor -->
             <!-- Event-Binding: statt (click) auch on-click -->
             <!-- ts als Komponente: https://stackoverflow.com/questions/34556277/angular2-table-rows-as-component -->
-            <tr *ngFor="let b of buecher; index as i" [@easeOut]="'in'">
+            <tr *ngFor="let b of filme; index as i" [@easeOut]="'in'">
               <td (click)="onClick(b)">{{ i + 1 }}</td>
               <td (click)="onClick(b)">{{ b._id }}</td>
               <td (click)="onClick(b)">{{ b.titel }}</td>
@@ -75,7 +75,7 @@
                 </span>
               </td>
               <td>
-                <!-- Pfad /:id, in buch-routing.module.ts -->
+                <!-- Pfad /:id, in film-routing.module.ts -->
                 <!-- modaler Dialog als Alternative: -->
                 <!-- https://v5.getbootstrap.com/docs/5.0/components/modal -->
                 <a [routerLink]="['..', b._id]" title="Details anzeigen">
@@ -94,12 +94,12 @@
       <div class="card-footer">
         <div>
           <i class="material-icons">info</i>
-          <span class="ml-1" [ngPlural]="buecher.length">
+          <span class="ml-1" [ngPlural]="filme.length">
             <!-- zu vergleichender Ausdruck -->
-            <ng-template ngPluralCase="=0"> Es gibt kein Buch </ng-template>
-            <ng-template ngPluralCase="=1"> Es gibt ein Buch </ng-template>
+            <ng-template ngPluralCase="=0"> Es gibt kein Film </ng-template>
+            <ng-template ngPluralCase="=1"> Es gibt ein Film </ng-template>
             <ng-template ngPluralCase="other">
-              Es gibt {{ buecher.length }} B&uuml;cher
+              Es gibt {{ filme.length }} B&uuml;cher
             </ng-template>
           </span>
         </div>
@@ -115,7 +115,7 @@
     </div>
 
     <!-- Ausgabe im Webbrowser statt console.log(...) -->
-    <!-- <pre>{{buecher | json}}</pre> -->
+    <!-- <pre>{{filme | json}}</pre> -->
 
     <ng-template #showErrorMsg>
       <hs-error-message [text]="errorMsg"></hs-error-message>

@@ -20,8 +20,8 @@
 <ng-template #details>
   <hs-details-breadcrumbs></hs-details-breadcrumbs>
 
-  <section class="mt-1" *ngIf="buch; else showErrorMsg">
-    <h4>Buch {{ buch._id }}:</h4>
+  <section class="mt-1" *ngIf="film; else showErrorMsg">
+    <h4>Film {{ film._id }}:</h4>
 
     <!-- https://v5.getbootstrap.com/docs/5.0/components/navs/#tabs -->
     <!-- jQuery erfordert id -->
@@ -39,7 +39,7 @@
           Stammdaten
         </a>
       </li>
-      <li class="nav-item" *ngIf="buch.hasSchlagwoerter()">
+      <li class="nav-item" *ngIf="film.hasSchlagwoerter()">
         <a
           class="nav-link"
           id="schlagwoerter-tab"
@@ -62,7 +62,7 @@
         aria-labelledby="stammdaten-tab"
       >
         <div class="mt-2">
-          <hs-details-stammdaten [buch]="buch"> </hs-details-stammdaten>
+          <hs-details-stammdaten [film]="film"> </hs-details-stammdaten>
         </div>
       </div>
 
@@ -71,16 +71,16 @@
         id="schlagwoerter"
         role="tabpanel"
         aria-labelledby="schlagwoerter-tab"
-        *ngIf="buch.hasSchlagwoerter()"
+        *ngIf="film.hasSchlagwoerter()"
       >
         <div class="mt-2">
-          <hs-details-schlagwoerter [values]="buch.schlagwoerter">
+          <hs-details-schlagwoerter [values]="film.schlagwoerter">
           </hs-details-schlagwoerter>
         </div>
       </div>
     </div>
 
-    <hs-details-bearbeiten [id]="buch._id" *ngIf="isAdmin">
+    <hs-details-bearbeiten [id]="film._id" *ngIf="isAdmin">
     </hs-details-bearbeiten>
   </section>
 

@@ -1,34 +1,34 @@
 ------------------------------------Änderungen-------------------------------------------
 DUY: 31.12.2020
 restclient
-    buch-3-put-invalid.json -> film-3-put-invalid.json
-    buch-3-put.json -> film-3-put.json
-    buch-neu-invalid.json -> film-neu-invalid.json
-    buch-neu.json -> film-neu.json
-    buch.rest -> film.rest
-src/app/buch -> src/app/film
-    create-buch -> create-film
-        create-buch.component.html -> create-film.component.html
-        create-buch.component.ts -> create-film.component.ts
-        create-buch.guard.ts -> create-film.guard.ts
-        create-buch.module.ts -> create-film.module.ts
-    details-buch -> details-film
-        details-buch.component.html -> details-film.component.html
-        details-buch.component.ts -> details-film.component.ts
-        details-buch.module.ts -> details-film.module.ts
+    film-3-put-invalid.json -> film-3-put-invalid.json
+    film-3-put.json -> film-3-put.json
+    film-neu-invalid.json -> film-neu-invalid.json
+    film-neu.json -> film-neu.json
+    film.rest -> film.rest
+src/app/film -> src/app/film
+    create-film -> create-film
+        create-film.component.html -> create-film.component.html
+        create-film.component.ts -> create-film.component.ts
+        create-film.guard.ts -> create-film.guard.ts
+        create-film.module.ts -> create-film.module.ts
+    details-film -> details-film
+        details-film.component.html -> details-film.component.html
+        details-film.component.ts -> details-film.component.ts
+        details-film.module.ts -> details-film.module.ts
     /shared
-        buch.service.ts -> film.service.ts
-        buch.ts -> film.ts
-    suche-buecher -> suche-filme
-        suche-buecher.component.html -> suche-filme.component.html
-        suche-buecher.component.ts -> suche-filme.component.ts
-        suche-buecher.module.ts -> suche-filme.module.ts
-        suche-buecher.module.ts -> suche-filme.module.ts
-    update-buch -> update-film
-        update-buch.component.html -> update-film.component.html
-        update-buch.component.ts -> update-film.component.ts
-        update-buch.component.ts -> update-film.component.ts
-        update-buch.module.ts -> update-film.module.ts
+        film.service.ts -> film.service.ts
+        film.ts -> film.ts
+    suche-filme -> suche-filme
+        suche-filme.component.html -> suche-filme.component.html
+        suche-filme.component.ts -> suche-filme.component.ts
+        suche-filme.module.ts -> suche-filme.module.ts
+        suche-filme.module.ts -> suche-filme.module.ts
+    update-film -> update-film
+        update-film.component.html -> update-film.component.html
+        update-film.component.ts -> update-film.component.ts
+        update-film.component.ts -> update-film.component.ts
+        update-film.module.ts -> update-film.module.ts
         
-    buch-routing.module.ts -> film-routing.module.ts
-    buch.module.ts -> film.module.ts
+    film-routing.module.ts -> film-routing.module.ts
+    film.module.ts -> film.module.ts

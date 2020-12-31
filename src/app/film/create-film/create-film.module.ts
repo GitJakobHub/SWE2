@@ -17,7 +17,7 @@
 
 import { CommonModule } from '@angular/common';
 import { CreateArtModule } from './create-art.module';
-import { CreateBuchComponent } from './create-buch.component';
+import { CreateFilmComponent } from './create-film.component';
 import { CreateDatumModule } from './create-datum.module';
 import { CreateIsbnModule } from './create-isbn.module';
 import { CreateLieferbarModule } from './create-lieferbar.module';
@@ -36,10 +36,10 @@ import { Title } from '@angular/platform-browser';
 // Ein Modul enthaelt logisch zusammengehoerige Funktionalitaet.
 // Exportierte Komponenten koennen bei einem importierenden Modul in dessen
 // Komponenten innerhalb deren Templates (= HTML-Fragmente) genutzt werden.
-// BuchModule ist ein "FeatureModule", das Features fuer Buecher bereitstellt
+// FilmModule ist ein "FeatureModule", das Features fuer Filme bereitstellt
 @NgModule({
-    declarations: [CreateBuchComponent],
-    exports: [CreateBuchComponent],
+    declarations: [CreateFilmComponent],
+    exports: [CreateFilmComponent],
     imports: [
         CommonModule,
         HttpClientModule,
@@ -58,4 +58,4 @@ import { Title } from '@angular/platform-browser';
     ],
     providers: [Title],
 })
-export class CreateBuchModule {}
+export class CreateFilmModule {}

@@ -15,17 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { BuchService, FindError } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { FilmService, FindError } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { first, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
-import type { Buch } from '../shared';
+import type { Film } from '../shared';
 import { Component } from '@angular/core';
 import { HttpStatus } from '../../shared';
 import type { OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-buch</code> mit Kindkomponenten
+ * Komponente f&uuml;r das Tag <code>hs-update-film</code> mit Kindkomponenten
  * f&uuml;r die folgenden Tags:
  * <ul>
  *  <li> <code>hs-stammdaten</code>
@@ -33,27 +33,27 @@ import { Title } from '@angular/platform-browser'; // eslint-disable-line @types
  * </ul>
  */
 @Component({
-    selector: 'hs-update-buch',
-    templateUrl: './update-buch.component.html',
+    selector: 'hs-update-film',
+    templateUrl: './update-film.component.html',
 })
-export class UpdateBuchComponent implements OnInit {
-    buch: Buch | undefined;
+export class UpdateFilmComponent implements OnInit {
+    film: Film | undefined;
 
     errorMsg: string | undefined;
 
     constructor(
-        private readonly buchService: BuchService,
+        private readonly filmService: FilmService,
         private readonly titleService: Title,
         private readonly route: ActivatedRoute,
     ) {
-        console.log('UpdateBuchComponent.constructor()');
+        console.log('UpdateFilmComponent.constructor()');
     }
 
     ngOnInit() {
-        // Pfad-Parameter aus /buecher/:id/update
+        // Pfad-Parameter aus /filme/:id/update
         const id = this.route.snapshot.paramMap.get('id') ?? undefined;
 
-        this.buchService
+        this.filmService
             .findById(id)
             .pipe(
                 tap(result => this.setProps(result)),
@@ -62,30 +62,30 @@ export class UpdateBuchComponent implements OnInit {
             .subscribe();
     }
 
-    private setProps(result: Buch | FindError) {
+    private setProps(result: Film | FindError) {
         if (result instanceof FindError) {
             this.handleError(result);
             return;
         }
 
-        this.buch = result;
+        this.film = result;
         this.errorMsg = undefined;
 
-        const titel = `Aktualisieren ${this.buch._id}`;
+        const titel = `Aktualisieren ${this.film._id}`;
         this.titleService.setTitle(titel);
     }
 
     private handleError(err: FindError) {
         const { statuscode } = err;
         console.log(
-            `UpdateBuchComponent.handleError(): statuscode=${statuscode}`,
+            `UpdateFilmComponent.handleError(): statuscode=${statuscode}`,
         );
 
-        this.buch = undefined;
+        this.film = undefined;
 
         switch (statuscode) {
             case HttpStatus.NOT_FOUND:
-                this.errorMsg = 'Kein Buch gefunden.';
+                this.errorMsg = 'Kein Film gefunden.';
                 break;
             case HttpStatus.TOO_MANY_REQUESTS:
                 this.errorMsg =

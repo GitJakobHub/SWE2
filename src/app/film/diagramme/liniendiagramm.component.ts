@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Buch, BuchService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Film, FilmService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import type { DataItem, MultiSeries } from '@swimlane/ngx-charts';
 import { first, map } from 'rxjs/operators';
 import { Component } from '@angular/core';
@@ -35,7 +35,7 @@ export class LiniendiagrammComponent implements OnInit {
     series!: MultiSeries;
 
     constructor(
-        private readonly buchService: BuchService,
+        private readonly filmService: FilmService,
         private readonly titleService: Title,
     ) {
         console.log('LiniendiagrammComponent.constructor()');
@@ -51,38 +51,38 @@ export class LiniendiagrammComponent implements OnInit {
     }
 
     private setSeries() {
-        const buecher$ = this.buchService.find() as Observable<Buch[]>;
-        buecher$
+        const filme$ = this.filmService.find() as Observable<Film[]>;
+        filme$
             .pipe(
-                map(buecher =>
-                    buecher.filter(buch => buch.rating !== undefined),
+                map(filme =>
+                    filme.filter(film => film.rating !== undefined),
                 ),
                 first(),
             )
             // eslint-disable-next-line rxjs/no-ignored-error
-            .subscribe(buchItems => {
-                const bewertungItems = this.getBewertungItems(buchItems);
-                const preisItems = this.getPreisItems(buchItems);
+            .subscribe(filmItems => {
+                const bewertungItems = this.getBewertungItems(filmItems);
+                const preisItems = this.getPreisItems(filmItems);
                 this.initSeries(bewertungItems, preisItems);
             });
     }
 
     // https://swimlane.gitbook.io/ngx-charts/examples/line-area-charts/line-chart
-    private getBewertungItems(buecher: Buch[]) {
-        return buecher.map(buch => {
+    private getBewertungItems(filme: Film[]) {
+        return filme.map(film => {
             const bewertungItem: DataItem = {
-                name: buch._id as string,
-                value: buch.rating as number,
+                name: film._id as string,
+                value: film.rating as number,
             };
             return bewertungItem;
         });
     }
 
-    private getPreisItems(buecher: Buch[]) {
-        return buecher.map(buch => {
+    private getPreisItems(filme: Film[]) {
+        return filme.map(film => {
             const preisItem: DataItem = {
-                name: buch._id as string,
-                value: buch.preis,
+                name: film._id as string,
+                value: film.preis,
             };
             return preisItem;
         });

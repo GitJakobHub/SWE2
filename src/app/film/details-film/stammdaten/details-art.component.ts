@@ -16,7 +16,7 @@
  */
 
 import { Component, Input } from '@angular/core';
-import type { BuchArt } from '../../shared/film';
+import type { FilmArt } from '../../shared/film';
 import type { OnInit } from '@angular/core';
 
 /**
@@ -28,7 +28,7 @@ import type { OnInit } from '@angular/core';
 })
 export class DetailsArtComponent implements OnInit {
     @Input()
-    art!: BuchArt;
+    art!: FilmArt;
 
     ngOnInit() {
         console.log(`DetailsArtComponent.art=${this.art}`);

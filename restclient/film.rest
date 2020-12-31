@@ -11,80 +11,80 @@ Content-Type: application/x-www-form-urlencoded
 
 username=admin&password=p
 
-### Suche alle Buecher
-https://{{host}}/buecher
+### Suche alle Filme
+https://{{host}}/filme
 
-### Suche mit vorhandener Buch-ID
-https://{{host}}/buecher/00000000-0000-0000-0000-000000000001
+### Suche mit vorhandener Film-ID
+https://{{host}}/filme/00000000-0000-0000-0000-000000000001
 
-### Suche mit vorhandener Buch-ID und Versionsnummer
-https://{{host}}/buecher/00000000-0000-0000-0000-000000000001
+### Suche mit vorhandener Film-ID und Versionsnummer
+https://{{host}}/filme/00000000-0000-0000-0000-000000000001
 If-None-Match: 0
 
-### Optionen zu Buch-ID
-OPTIONS https://{{host}}/buecher/00000000-0000-0000-0000-000000000001
+### Optionen zu Film-ID
+OPTIONS https://{{host}}/filme/00000000-0000-0000-0000-000000000001
 
-### Suche mit ungueltiger Buch-ID
-https://{{host}}/buecher/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
+### Suche mit ungueltiger Film-ID
+https://{{host}}/filme/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
 
-### Suche mit nicht-vorhandener Buch-ID
-https://{{host}}/buecher/99999999-9999-9999-9999-999999999999
+### Suche mit nicht-vorhandener Film-ID
+https://{{host}}/filme/99999999-9999-9999-9999-999999999999
 
 ### Suche mit vorhandenem Titel
-https://{{host}}/buecher?titel=a
+https://{{host}}/filme?titel=a
 
 ### Suche mit vorhandener ISBN-Nummber
-https://{{host}}/buecher?isbn=000-0-00000-000-1
+https://{{host}}/filme?isbn=000-0-00000-000-1
 
 ### Suche mit vorhandenen Schlagwoertern
-https://{{host}}/buecher?javascript=true&typescript=true
+https://{{host}}/filme?javascript=true&typescript=true
 
-### Suche mit gueltiger Buchart
-https://{{host}}/buecher?art=KINDLE
+### Suche mit gueltiger Filmart
+https://{{host}}/filme?art=KINDLE
 
 ### Suche mit gueltigem Rating
-https://{{host}}/buecher?rating=1
+https://{{host}}/filme?rating=1
 
-### Suche lieferbare Buecher
-https://{{host}}/buecher?lieferbar=true
+### Suche lieferbare Filme
+https://{{host}}/filme?lieferbar=true
 
-### Neues Buch anlegen
-POST https://{{host}}/buecher
+### Neues Film anlegen
+POST https://{{host}}/filme
 Content-Type: application/json
 Authorization: {{token}}
 
-< ./config/rest/buch-neu.json
+< ./config/rest/film-neu.json
 
-### Neues Buch mit ungueltigen Daten anlegen
-POST https://{{host}}/buecher
+### Neues Film mit ungueltigen Daten anlegen
+POST https://{{host}}/filme
 Content-Type: application/json
 Authorization: {{token}}
 
-< ./config/rest/buch-neu-invalid.json
+< ./config/rest/film-neu-invalid.json
 
-### Vorhandenes Buch aktualisieren
-PUT https://{{host}}/buecher/00000000-0000-0000-0000-000000000003
-Content-Type: application/json
-Authorization: {{token}}
-If-Match: 0
-
-< ./config/rest/buch-3-put.json
-
-### Vorhandenes Buch *OHNE* Versionsnummer aktualisieren
-PUT https://{{host}}/buecher/00000000-0000-0000-0000-000000000003
-Content-Type: application/json
-Authorization: {{token}}
-
-< ./config/rest/buch-3-put.json
-
-### Vorhandenes Buch mit ungueltigen Daten aktualisieren
-PUT https://{{host}}/buecher/00000000-0000-0000-0000-000000000003
+### Vorhandenes Film aktualisieren
+PUT https://{{host}}/filme/00000000-0000-0000-0000-000000000003
 Content-Type: application/json
 Authorization: {{token}}
 If-Match: 0
 
-< ./config/rest/buch-3-put-invalid.json
+< ./config/rest/film-3-put.json
 
-### Loeschen eines vorhandenen Buches
-DELETE https://{{host}}/buecher/00000000-0000-0000-0000-000000000005
+### Vorhandenes Film *OHNE* Versionsnummer aktualisieren
+PUT https://{{host}}/filme/00000000-0000-0000-0000-000000000003
+Content-Type: application/json
+Authorization: {{token}}
+
+< ./config/rest/film-3-put.json
+
+### Vorhandenes Film mit ungueltigen Daten aktualisieren
+PUT https://{{host}}/filme/00000000-0000-0000-0000-000000000003
+Content-Type: application/json
+Authorization: {{token}}
+If-Match: 0
+
+< ./config/rest/film-3-put-invalid.json
+
+### Loeschen eines vorhandenen Filmes
+DELETE https://{{host}}/filme/00000000-0000-0000-0000-000000000005
 Authorization: {{token}}

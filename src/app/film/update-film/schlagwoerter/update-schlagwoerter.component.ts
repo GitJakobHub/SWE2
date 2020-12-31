@@ -15,11 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { BuchService, UpdateError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { FilmService, UpdateError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HOME_PATH, HttpStatus } from '../../../shared';
-import type { Buch } from '../../shared';
+import type { Film } from '../../shared';
 import { HttpErrorResponse } from '@angular/common/http';
 import type { OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
@@ -33,9 +33,9 @@ import { first } from 'rxjs/operators';
     templateUrl: './update-schlagwoerter.component.html',
 })
 export class UpdateSchlagwoerterComponent implements OnInit {
-    // <hs-update-schlagwoerter [buch]="...">
+    // <hs-update-schlagwoerter [film]="...">
     @Input()
-    buch!: Buch;
+    film!: Film;
 
     form!: FormGroup;
 
@@ -46,7 +46,7 @@ export class UpdateSchlagwoerterComponent implements OnInit {
     errorMsg: string | undefined = undefined;
 
     constructor(
-        private readonly buchService: BuchService,
+        private readonly filmService: FilmService,
         private readonly router: Router,
     ) {
         console.log('UpdateSchlagwoerterComponent.constructor()');
@@ -54,15 +54,15 @@ export class UpdateSchlagwoerterComponent implements OnInit {
 
     /**
      * Das Formular als Gruppe von Controls initialisieren und mit den
-     * Schlagwoertern des zu &auml;ndernden Buchs vorbelegen.
+     * Schlagwoertern des zu &auml;ndernden Films vorbelegen.
      */
     ngOnInit() {
-        console.log('buch=', this.buch);
+        console.log('film=', this.film);
 
         // Definition und Vorbelegung der Eingabedaten (hier: Checkbox)
-        const hasJavaScript = this.buch.hasSchlagwort('JAVASCRIPT');
+        const hasJavaScript = this.film.hasSchlagwort('JAVASCRIPT');
         this.javascript = new FormControl(hasJavaScript);
-        const hasTypeScript = this.buch.hasSchlagwort('TYPESCRIPT');
+        const hasTypeScript = this.film.hasSchlagwort('TYPESCRIPT');
         this.typescript = new FormControl(hasTypeScript);
 
         this.form = new FormGroup({
@@ -73,7 +73,7 @@ export class UpdateSchlagwoerterComponent implements OnInit {
     }
 
     /**
-     * Die aktuellen Schlagwoerter f&uuml;r das angezeigte Buch-Objekt
+     * Die aktuellen Schlagwoerter f&uuml;r das angezeigte Film-Objekt
      * zur&uuml;ckschreiben.
      * @return false, um das durch den Button-Klick ausgel&ouml;ste Ereignis
      *         zu konsumieren.
@@ -86,13 +86,13 @@ export class UpdateSchlagwoerterComponent implements OnInit {
             return;
         }
 
-        this.buch.updateSchlagwoerter(
+        this.film.updateSchlagwoerter(
             this.javascript.value,
             this.typescript.value,
         );
-        console.log('buch=', this.buch);
+        console.log('film=', this.film);
 
-        const next = async (result: Buch | UpdateError) => {
+        const next = async (result: Film | UpdateError) => {
             if (result instanceof UpdateError) {
                 this.handleError(result);
                 return;
@@ -100,7 +100,7 @@ export class UpdateSchlagwoerterComponent implements OnInit {
 
             await this.router.navigate([HOME_PATH]);
         };
-        this.buchService.update(this.buch).pipe(first()).subscribe({ next });
+        this.filmService.update(this.film).pipe(first()).subscribe({ next });
 
         // damit das (Submit-) Ereignis konsumiert wird und nicht an
         // uebergeordnete Eltern-Komponenten propagiert wird bis zum

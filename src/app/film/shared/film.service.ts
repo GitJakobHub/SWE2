@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { BASE_URI, BUECHER_PATH_REST } from '../../shared';
-import type { BuchArt, BuchServer, Verlag } from './film';
+import { BASE_URI, FILME_PATH_REST } from '../../shared';
+import type { FilmArt, FilmServer, Verlag } from './film';
 import { FindError, RemoveError, SaveError, UpdateError } from './errors';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
@@ -28,7 +28,7 @@ import {
     HttpResponse,
 } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { Buch } from './film';
+import { Film } from './film';
 import type { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import type { Observable } from 'rxjs';
@@ -37,7 +37,7 @@ import { of } from 'rxjs';
 export interface Suchkriterien {
     titel: string;
     verlag: Verlag | '';
-    art: BuchArt | '';
+    art: FilmArt | '';
     schlagwoerter: { javascript: boolean; typescript: boolean };
 }
 
@@ -60,49 +60,49 @@ export interface Suchkriterien {
  */
 /* eslint-disable no-underscore-dangle */
 @Injectable({ providedIn: 'root' })
-export class BuchService {
-    private readonly baseUriBuecher!: string;
+export class FilmService {
+    private readonly baseUriFilme!: string;
 
-    private _buch: Buch | undefined;
+    private _film: Film | undefined;
 
     /**
      * @param httpClient injizierter Service HttpClient (von Angular)
      * @return void
      */
     constructor(private readonly httpClient: HttpClient) {
-        this.baseUriBuecher = `${BASE_URI}/${BUECHER_PATH_REST}`;
+        this.baseUriFilme = `${BASE_URI}/${FILME_PATH_REST}`;
         console.log(
-            `BuchService.constructor(): baseUriBuch=${this.baseUriBuecher}`,
+            `FilmService.constructor(): baseUriFilm=${this.baseUriFilme}`,
         );
     }
 
     /**
-     * Ein Buch-Objekt puffern.
-     * @param buch Das Buch-Objekt, das gepuffert wird.
+     * Ein Film-Objekt puffern.
+     * @param film Das Film-Objekt, das gepuffert wird.
      * @return void
      */
-    set buch(buch: Buch) {
-        console.log('BuchService.set buch()', buch);
-        this._buch = buch;
+    set film(film: Film) {
+        console.log('FilmService.set film()', film);
+        this._film = film;
     }
 
     /**
-     * Buecher anhand von Suchkriterien suchen
+     * Filme anhand von Suchkriterien suchen
      * @param suchkriterien Die Suchkriterien
-     * @returns Gefundene Buecher oder Statuscode des fehlerhaften GET-Requests
+     * @returns Gefundene Filme oder Statuscode des fehlerhaften GET-Requests
      */
     find(
         suchkriterien: Suchkriterien | undefined = undefined, // eslint-disable-line unicorn/no-useless-undefined
-    ): Observable<Buch[] | FindError> {
-        console.log('BuchService.find(): suchkriterien=', suchkriterien);
+    ): Observable<Film[] | FindError> {
+        console.log('FilmService.find(): suchkriterien=', suchkriterien);
         const params = this.suchkriterienToHttpParams(suchkriterien);
-        const uri = this.baseUriBuecher;
-        console.log(`BuchService.find(): uri=${uri}`);
+        const uri = this.baseUriFilme;
+        console.log(`FilmService.find(): uri=${uri}`);
 
         return (
             this.httpClient
                 /* eslint-disable object-curly-newline */
-                .get<BuchServer[]>(uri, {
+                .get<FilmServer[]>(uri, {
                     params,
                 })
                 /* eslint-enable object-curly-newline */
@@ -114,8 +114,8 @@ export class BuchService {
                         return of(this.buildFindError(errResponse));
                     }),
 
-                    // entweder Observable<BuchServer[]> oder Observable<FindError>
-                    map(result => this.findResultToBuchArray(result)),
+                    // entweder Observable<FilmServer[]> oder Observable<FindError>
+                    map(result => this.findResultToFilmArray(result)),
                 )
         );
 
@@ -125,50 +125,50 @@ export class BuchService {
         // Falls benoetigt, gibt es in Angular dafuer den Service Jsonp.
     }
 
-    private findResultToBuchArray(
-        result: BuchServer[] | FindError,
-    ): Buch[] | FindError {
+    private findResultToFilmArray(
+        result: FilmServer[] | FindError,
+    ): Film[] | FindError {
         if (result instanceof FindError) {
             return result;
         }
 
-        const buecher = result.map(buch => Buch.fromServer(buch));
-        console.log('BuchService.mapFindResult(): buecher=', buecher);
-        return buecher;
+        const filme = result.map(film => Film.fromServer(film));
+        console.log('FilmService.mapFindResult(): filme=', filme);
+        return filme;
     }
 
     /**
-     * Ein Buch anhand der ID suchen
-     * @param id Die ID des gesuchten Buchs
+     * Ein Film anhand der ID suchen
+     * @param id Die ID des gesuchten Films
      */
-    findById(id: string | undefined): Observable<Buch | FindError> {
-        console.log(`BuchService.findById(): id=${id}`);
+    findById(id: string | undefined): Observable<Film | FindError> {
+        console.log(`FilmService.findById(): id=${id}`);
 
         if (id === undefined) {
-            console.log('BuchService.findById(): Keine Id');
+            console.log('FilmService.findById(): Keine Id');
             return of(this.buildFindError());
         }
 
-        // Gibt es ein gepuffertes Buch mit der gesuchten ID und Versionsnr.?
+        // Gibt es ein gepuffertes Film mit der gesuchten ID und Versionsnr.?
         if (
-            this._buch !== undefined &&
-            this._buch._id === id &&
-            this._buch.version !== undefined
+            this._film !== undefined &&
+            this._film._id === id &&
+            this._film.version !== undefined
         ) {
             console.log(
-                `BuchService.findById(): Buch gepuffert, version=${this._buch.version}`,
+                `FilmService.findById(): Film gepuffert, version=${this._film.version}`,
             );
-            return of(this._buch);
+            return of(this._film);
         }
 
         // wegen fehlender Versionsnummer (im ETag) nachladen
-        const uri = `${this.baseUriBuecher}/${id}`;
-        console.log(`BuchService.findById(): uri=${uri}`);
+        const uri = `${this.baseUriFilme}/${id}`;
+        console.log(`FilmService.findById(): uri=${uri}`);
 
         return (
             this.httpClient
                 /* eslint-disable object-curly-newline */
-                .get<BuchServer>(uri, {
+                .get<FilmServer>(uri, {
                     observe: 'response',
                 })
                 /* eslint-enable object-curly-newline */
@@ -180,15 +180,15 @@ export class BuchService {
                         return of(this.buildFindError(errResponse));
                     }),
 
-                    // entweder Observable<HttpResponse<BuchServer>> oder Observable<FindError>
-                    map(result => this.findByIdResultToBuch(result)),
+                    // entweder Observable<HttpResponse<FilmServer>> oder Observable<FindError>
+                    map(result => this.findByIdResultToFilm(result)),
                 )
         );
     }
 
-    private findByIdResultToBuch(
-        result: HttpResponse<BuchServer> | FindError,
-    ): Buch | FindError {
+    private findByIdResultToFilm(
+        result: HttpResponse<FilmServer> | FindError,
+    ): Film | FindError {
         if (result instanceof FindError) {
             return result;
         }
@@ -201,17 +201,17 @@ export class BuchService {
         const etag = headers.get('ETag') ?? undefined;
         console.log(`etag = ${etag}`);
 
-        this._buch = Buch.fromServer(body, etag);
-        return this._buch;
+        this._film = Film.fromServer(body, etag);
+        return this._film;
     }
 
     /**
-     * Ein neues Buch anlegen
-     * @param neuesBuch Das JSON-Objekt mit dem neuen Buch
+     * Ein neues Film anlegen
+     * @param neuesFilm Das JSON-Objekt mit dem neuen Film
      */
-    save(buch: Buch): Observable<string | SaveError> {
-        console.log('BuchService.save(): buch=', buch);
-        buch.datum = new Date();
+    save(film: Film): Observable<string | SaveError> {
+        console.log('FilmService.save(): film=', film);
+        film.datum = new Date();
 
         /* eslint-disable @typescript-eslint/naming-convention */
         const headers = new HttpHeaders({
@@ -221,7 +221,7 @@ export class BuchService {
         /* eslint-enable @typescript-eslint/naming-convention */
 
         return this.httpClient
-            .post(this.baseUriBuecher, buch.toJSON(), {
+            .post(this.baseUriFilme, film.toJSON(), {
                 headers,
                 observe: 'response',
                 responseType: 'text',
@@ -246,7 +246,7 @@ export class BuchService {
         }
 
         const response = result;
-        console.log('BuchService.save(): map(): response', response);
+        console.log('FilmService.save(): map(): response', response);
 
         // id aus Header "Locaction" extrahieren
         const location = response.headers.get('Location');
@@ -260,20 +260,20 @@ export class BuchService {
     }
 
     /**
-     * Ein vorhandenes Buch aktualisieren
-     * @param buch Das JSON-Objekt mit den aktualisierten Buchdaten
+     * Ein vorhandenes Film aktualisieren
+     * @param film Das JSON-Objekt mit den aktualisierten Filmdaten
      */
-    update(buch: Buch): Observable<Buch | UpdateError> {
-        console.log('BuchService.update(): buch=', buch);
+    update(film: Film): Observable<Film | UpdateError> {
+        console.log('FilmService.update(): film=', film);
 
-        const { version } = buch;
+        const { version } = film;
         if (version === undefined) {
-            const msg = `Keine Versionsnummer fuer das Buch ${buch._id}`;
+            const msg = `Keine Versionsnummer fuer das Film ${film._id}`;
             console.error(msg);
             return of(new UpdateError(-1, msg));
         }
 
-        const uri = `${this.baseUriBuecher}/${buch._id}`;
+        const uri = `${this.baseUriFilme}/${film._id}`;
         /* eslint-disable @typescript-eslint/naming-convention */
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -281,10 +281,10 @@ export class BuchService {
             'If-Match': `"${version}"`,
         });
         /* eslint-enable @typescript-eslint/naming-convention */
-        console.log('BuchService.update(): headers=', headers);
+        console.log('FilmService.update(): headers=', headers);
 
         return this.httpClient
-            .put(uri, buch, { headers, observe: 'response' })
+            .put(uri, film, { headers, observe: 'response' })
             .pipe(
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 catchError((err: unknown, _$) => {
@@ -298,8 +298,8 @@ export class BuchService {
                     if (versionOderError instanceof UpdateError) {
                         return versionOderError;
                     }
-                    buch.version = versionOderError;
-                    return buch;
+                    film.version = versionOderError;
+                    return film;
                 }),
             );
     }
@@ -312,9 +312,9 @@ export class BuchService {
         }
 
         const response = result;
-        console.log('BuchService.mapUpdateResult(): response', response);
+        console.log('FilmService.mapUpdateResult(): response', response);
         const etag = response.headers.get('ETag');
-        console.log(`BuchService.mapUpdateResult(): etag=${etag}`);
+        console.log(`FilmService.mapUpdateResult(): etag=${etag}`);
 
         const ende = etag?.lastIndexOf('"');
         const versionStr = etag?.slice(1, ende) ?? '1';
@@ -322,12 +322,12 @@ export class BuchService {
     }
 
     /**
-     * Ein Buch l&ouml;schen
-     * @param buch Das JSON-Objekt mit dem zu loeschenden Buch
+     * Ein Film l&ouml;schen
+     * @param film Das JSON-Objekt mit dem zu loeschenden Film
      */
-    remove(buch: Buch): Observable<Record<string, unknown> | RemoveError> {
-        console.log('BuchService.remove(): buch=', buch);
-        const uri = `${this.baseUriBuecher}/${buch._id}`;
+    remove(film: Film): Observable<Record<string, unknown> | RemoveError> {
+        console.log('FilmService.remove(): film=', film);
+        const uri = `${this.baseUriFilme}/${film._id}`;
 
         return this.httpClient.delete(uri).pipe(
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -354,7 +354,7 @@ export class BuchService {
         suchkriterien: Suchkriterien | undefined,
     ): HttpParams {
         console.log(
-            'BuchService.suchkriterienToHttpParams(): suchkriterien=',
+            'FilmService.suchkriterienToHttpParams(): suchkriterien=',
             suchkriterien,
         );
         let httpParams = new HttpParams();
@@ -397,7 +397,7 @@ export class BuchService {
 
         const { status, error } = err;
         console.log(
-            `BuchService.buildFindError(): status=${status}, Response-Body=`,
+            `FilmService.buildFindError(): status=${status}, Response-Body=`,
             error,
         );
         return new FindError(status, err);

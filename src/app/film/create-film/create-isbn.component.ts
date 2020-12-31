@@ -22,7 +22,7 @@ import { ISBN_REGEX } from '../shared';
 import type { OnInit } from '@angular/core';
 /**
  * Komponente mit dem Tag &lt;hs-create-isbn&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Buch zu realisieren.
+ * f&uuml;r ein neues Film zu realisieren.
  */
 @Component({
     selector: 'hs-create-isbn',

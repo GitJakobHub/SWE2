@@ -25,7 +25,7 @@ export enum Verlag {
     BAR_VERLAG = 'BAR_VERLAG',
 }
 
-export enum BuchArt {
+export enum FilmArt {
     KINDLE = 'KINDLE',
     DRUCKAUSGABE = 'DRUCKAUSGABE',
 }
@@ -34,14 +34,14 @@ export enum BuchArt {
 export const ISBN_REGEX = /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d{4}-\d|\d{3}-\d{10}/u;
 
 /**
- * Gemeinsame Datenfelder unabh&auml;ngig, ob die Buchdaten von einem Server
+ * Gemeinsame Datenfelder unabh&auml;ngig, ob die Filmdaten von einem Server
  * (z.B. RESTful Web Service) oder von einem Formular kommen.
  */
-export interface BuchShared {
+export interface FilmShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
     titel: string | undefined;
     verlag?: Verlag | '';
-    art: BuchArt;
+    art: FilmArt;
     preis: number;
     rabatt: number | undefined;
     datum?: string;
@@ -63,7 +63,7 @@ interface Link {
  *       String handhabbar sind.
  * </ul>
  */
-export interface BuchServer extends BuchShared {
+export interface FilmServer extends FilmShared {
     rating?: number;
     schlagwoerter?: string[];
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -83,7 +83,7 @@ export interface BuchServer extends BuchShared {
  *  <li> au&szlig;erdem Strings f&uuml;r Eingabefelder f&uuml;r Zahlen.
  * </ul>
  */
-export interface BuchForm extends BuchShared {
+export interface FilmForm extends FilmShared {
     rating: string;
     javascript?: boolean;
     typescript?: boolean;
@@ -93,7 +93,7 @@ export interface BuchForm extends BuchShared {
  * Model als Plain-Old-JavaScript-Object (POJO) fuer die Daten *UND*
  * Functions fuer Abfragen und Aenderungen.
  */
-export class Buch {
+export class Film {
     private static readonly SPACE = 2;
 
     ratingArray: boolean[] =
@@ -111,7 +111,7 @@ export class Buch {
         public _id: string | undefined, // eslint-disable-line @typescript-eslint/naming-convention
         public titel: string,
         public rating: number | undefined,
-        public art: BuchArt,
+        public art: FilmArt,
         public verlag: Verlag | undefined | '',
         datum: string | undefined,
         public preis: number,
@@ -123,18 +123,18 @@ export class Buch {
     ) {
         // TODO Parsing, ob der Datum-String valide ist
         this.datum = datum === undefined ? new Date() : new Date(datum);
-        console.log('Buch(): this=', this);
+        console.log('Film(): this=', this);
     }
 
     /**
-     * Ein Buch-Objekt mit JSON-Daten erzeugen, die von einem RESTful Web
+     * Ein Film-Objekt mit JSON-Daten erzeugen, die von einem RESTful Web
      * Service kommen.
-     * @param buch JSON-Objekt mit Daten vom RESTful Web Server
-     * @return Das initialisierte Buch-Objekt
+     * @param film JSON-Objekt mit Daten vom RESTful Web Server
+     * @return Das initialisierte Film-Objekt
      */
-    static fromServer(buchServer: BuchServer, etag?: string) {
+    static fromServer(filmServer: FilmServer, etag?: string) {
         let selfLink: string | undefined;
-        const { _links } = buchServer; // eslint-disable-line @typescript-eslint/naming-convention
+        const { _links } = filmServer; // eslint-disable-line @typescript-eslint/naming-convention
         if (_links !== undefined) {
             const { self } = _links;
             selfLink = self.href;
@@ -152,57 +152,57 @@ export class Buch {
             version = Number.parseInt(versionStr, 10);
         }
 
-        const buch = new Buch(
+        const film = new Film(
             id,
-            buchServer.titel ?? 'unbekannt',
-            buchServer.rating,
-            buchServer.art,
-            buchServer.verlag,
-            buchServer.datum,
-            buchServer.preis,
-            buchServer.rabatt ?? 0,
-            buchServer.lieferbar,
-            buchServer.schlagwoerter ?? [],
-            buchServer.isbn,
+            filmServer.titel ?? 'unbekannt',
+            filmServer.rating,
+            filmServer.art,
+            filmServer.verlag,
+            filmServer.datum,
+            filmServer.preis,
+            filmServer.rabatt ?? 0,
+            filmServer.lieferbar,
+            filmServer.schlagwoerter ?? [],
+            filmServer.isbn,
             version,
         );
-        console.log('Buch.fromServer(): buch=', buch);
-        return buch;
+        console.log('Film.fromServer(): film=', film);
+        return film;
     }
 
     /**
-     * Ein Buch-Objekt mit JSON-Daten erzeugen, die von einem Formular kommen.
-     * @param buch JSON-Objekt mit Daten vom Formular
-     * @return Das initialisierte Buch-Objekt
+     * Ein Film-Objekt mit JSON-Daten erzeugen, die von einem Formular kommen.
+     * @param film JSON-Objekt mit Daten vom Formular
+     * @return Das initialisierte Film-Objekt
      */
-    static fromForm(buchForm: BuchForm) {
-        console.log('Buch.fromForm(): buchForm=', buchForm);
+    static fromForm(filmForm: FilmForm) {
+        console.log('Film.fromForm(): filmForm=', filmForm);
         const schlagwoerter: string[] = [];
-        if (buchForm.javascript === true) {
+        if (filmForm.javascript === true) {
             schlagwoerter.push('JAVASCRIPT');
         }
-        if (buchForm.typescript === true) {
+        if (filmForm.typescript === true) {
             schlagwoerter.push('TYPESCRIPT');
         }
 
         const rabatt =
-            buchForm.rabatt === undefined ? 0 : buchForm.rabatt / 100; // eslint-disable-line @typescript-eslint/no-magic-numbers
-        const buch = new Buch(
-            buchForm._id,
-            buchForm.titel ?? 'unbekannt',
-            Number(buchForm.rating),
-            buchForm.art,
-            buchForm.verlag,
-            buchForm.datum,
-            buchForm.preis,
+            filmForm.rabatt === undefined ? 0 : filmForm.rabatt / 100; // eslint-disable-line @typescript-eslint/no-magic-numbers
+        const film = new Film(
+            filmForm._id,
+            filmForm.titel ?? 'unbekannt',
+            Number(filmForm.rating),
+            filmForm.art,
+            filmForm.verlag,
+            filmForm.datum,
+            filmForm.preis,
             rabatt,
-            buchForm.lieferbar,
+            filmForm.lieferbar,
             schlagwoerter,
-            buchForm.isbn,
-            buchForm.version,
+            filmForm.isbn,
+            filmForm.version,
         );
-        console.log('Buch.fromForm(): buch=', buch);
-        return buch;
+        console.log('Film.fromForm(): film=', film);
+        return film;
     }
 
     // Property in TypeScript wie in C#
@@ -218,10 +218,10 @@ export class Buch {
     }
 
     /**
-     * Abfrage, ob im Buchtitel der angegebene Teilstring enthalten ist. Dabei
+     * Abfrage, ob im Filmtitel der angegebene Teilstring enthalten ist. Dabei
      * wird nicht auf Gross-/Kleinschreibung geachtet.
      * @param titel Zu &uuml;berpr&uuml;fender Teilstring
-     * @return true, falls der Teilstring im Buchtitel enthalten ist. Sonst
+     * @return true, falls der Teilstring im Filmtitel enthalten ist. Sonst
      *         false.
      */
     containsTitel(titel: string) {
@@ -229,7 +229,7 @@ export class Buch {
     }
 
     /**
-     * Die Bewertung ("rating") des Buches um 1 erh&ouml;hen
+     * Die Bewertung ("rating") des Filmes um 1 erh&ouml;hen
      */
     rateUp() {
         if (this.rating !== undefined && this.rating < MAX_RATING) {
@@ -238,7 +238,7 @@ export class Buch {
     }
 
     /**
-     * Die Bewertung ("rating") des Buches um 1 erniedrigen
+     * Die Bewertung ("rating") des Filmes um 1 erniedrigen
      */
     rateDown() {
         if (this.rating !== undefined && this.rating > MIN_RATING) {
@@ -247,19 +247,19 @@ export class Buch {
     }
 
     /**
-     * Abfrage, ob das Buch dem angegebenen Verlag zugeordnet ist.
+     * Abfrage, ob das Film dem angegebenen Verlag zugeordnet ist.
      * @param verlag der Name des Verlags
-     * @return true, falls das Buch dem Verlag zugeordnet ist. Sonst false.
+     * @return true, falls das Film dem Verlag zugeordnet ist. Sonst false.
      */
     hasVerlag(verlag: string) {
         return this.verlag === verlag;
     }
 
     /**
-     * Aktualisierung der Stammdaten des Buch-Objekts.
-     * @param titel Der neue Buchtitel
+     * Aktualisierung der Stammdaten des Film-Objekts.
+     * @param titel Der neue Filmtitel
      * @param rating Die neue Bewertung
-     * @param art Die neue Buchart (DRUCKAUSGABE oder KINDLE)
+     * @param art Die neue Filmart (DRUCKAUSGABE oder KINDLE)
      * @param verlag Der neue Verlag
      * @param preis Der neue Preis
      * @param rabatt Der neue Rabatt
@@ -267,7 +267,7 @@ export class Buch {
     // eslint-disable-next-line max-params
     updateStammdaten(
         titel: string,
-        art: BuchArt,
+        art: FilmArt,
         verlag: Verlag | undefined | '',
         rating: number | undefined,
         datum: Date | undefined,
@@ -290,7 +290,7 @@ export class Buch {
     }
 
     /**
-     * Abfrage, ob es zum Buch auch Schlagw&ouml;rter gibt.
+     * Abfrage, ob es zum Film auch Schlagw&ouml;rter gibt.
      * @return true, falls es mindestens ein Schlagwort gibt. Sonst false.
      */
     hasSchlagwoerter() {
@@ -298,7 +298,7 @@ export class Buch {
     }
 
     /**
-     * Abfrage, ob es zum Buch das angegebene Schlagwort gibt.
+     * Abfrage, ob es zum Film das angegebene Schlagwort gibt.
      * @param schlagwort das zu &uuml;berpr&uuml;fende Schlagwort
      * @return true, falls es das Schlagwort gibt. Sonst false.
      */
@@ -307,7 +307,7 @@ export class Buch {
     }
 
     /**
-     * Aktualisierung der Schlagw&ouml;rter des Buch-Objekts.
+     * Aktualisierung der Schlagw&ouml;rter des Film-Objekts.
      * @param javascript ist das Schlagwort JAVASCRIPT gesetzt
      * @param typescript ist das Schlagwort TYPESCRIPT gesetzt
      */
@@ -322,11 +322,11 @@ export class Buch {
     }
 
     /**
-     * Konvertierung des Buchobjektes in ein JSON-Objekt f&uuml;r den RESTful
+     * Konvertierung des Filmobjektes in ein JSON-Objekt f&uuml;r den RESTful
      * Web Service.
      * @return Das JSON-Objekt f&uuml;r den RESTful Web Service
      */
-    toJSON(): BuchServer {
+    toJSON(): FilmServer {
         const datum =
             this.datum === undefined ? undefined : this.datum.toISOString();
         console.log(`toJson(): datum=${datum}`);
@@ -347,7 +347,7 @@ export class Buch {
 
     toString() {
         // eslint-disable-next-line no-null/no-null,unicorn/no-null
-        return JSON.stringify(this, null, Buch.SPACE);
+        return JSON.stringify(this, null, Film.SPACE);
     }
 
     private resetSchlagwoerter() {

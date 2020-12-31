@@ -14,8 +14,8 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<section *ngIf="buch">
-  <h4>Buch {{ buch._id }}:</h4>
+<section *ngIf="film">
+  <h4>Film {{ film._id }}:</h4>
 
   <ul class="nav nav-tabs" id="kundeUpdate">
     <li class="nav-item">
@@ -54,7 +54,7 @@
       aria-labelledby="stammdaten-tab"
     >
       <div class="mt-1">
-        <hs-update-stammdaten [buch]="buch"> </hs-update-stammdaten>
+        <hs-update-stammdaten [film]="film"> </hs-update-stammdaten>
       </div>
     </div>
     <div
@@ -64,7 +64,7 @@
       aria-labelledby="schlagwoerter-tab"
     >
       <div class="mt-1">
-        <hs-update-schlagwoerter [buch]="buch"> </hs-update-schlagwoerter>
+        <hs-update-schlagwoerter [film]="film"> </hs-update-schlagwoerter>
       </div>
     </div>
   </div>

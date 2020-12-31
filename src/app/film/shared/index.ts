@@ -15,6 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-export { Buch, ISBN_REGEX } from './film';
-export { BuchService, Suchkriterien } from './film.service';
+export { Film, ISBN_REGEX } from './film';
+export { FilmService, Suchkriterien } from './film.service';
 export { FindError, RemoveError, SaveError, UpdateError } from './errors';

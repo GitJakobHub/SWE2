@@ -33,16 +33,16 @@
       <div *ngIf="titel.invalid && titel.touched" class="invalid-feedback">
         <i class="material-icons">error</i>
         <div *ngIf="titel.errors && titel.errors.required">
-          <span class="ml-1">Ein Buchtitel muss eingegeben werden.</span>
+          <span class="ml-1">Ein Filmtitel muss eingegeben werden.</span>
         </div>
         <div *ngIf="titel.errors && titel.errors.minlength">
           <span class="ml-1">
-            Ein Buchtitel muss mindestens 2 Zeichen lang sein.
+            Ein Filmtitel muss mindestens 2 Zeichen lang sein.
           </span>
         </div>
         <div *ngIf="titel.errors && titel.errors.pattern">
           <span class="ml-1">
-            Ein Buchtitel muss mit einem Buchstaben oder einer Ziffer beginnen.
+            Ein Filmtitel muss mit einem Filmstaben oder einer Ziffer beginnen.
           </span>
         </div>
       </div>

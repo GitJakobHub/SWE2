@@ -17,29 +17,29 @@
 
 import { AdminGuard } from '../auth/admin.guard';
 import { BalkendiagrammComponent } from './diagramme/balkendiagramm.component';
-import { CreateBuchComponent } from './create-buch/create-buch.component';
-import { CreateBuchGuard } from './create-buch/create-buch.guard';
-import { DetailsBuchComponent } from './details-buch/details-buch.component';
+import { CreateFilmComponent } from './create-film/create-film.component';
+import { CreateFilmGuard } from './create-film/create-film.guard';
+import { DetailsFilmComponent } from './details-film/details-film.component';
 import { LiniendiagrammComponent } from './diagramme/liniendiagramm.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import type { Routes } from '@angular/router';
-import { SucheBuecherComponent } from './suche-buecher/suche-buecher.component';
+import { SucheFilmeComponent } from './suche-filme/suche-filme.component';
 import { TortendiagrammComponent } from './diagramme/tortendiagramm.component';
-import { UpdateBuchComponent } from './update-buch/update-buch.component';
+import { UpdateFilmComponent } from './update-film/update-film.component';
 
-// Route-Definitionen fuer das Feature-Modul "buch":
+// Route-Definitionen fuer das Feature-Modul "film":
 // Zuordnung von Pfaden und Komponenten mit HTML-Templates
 const routes: Routes = [
     {
         path: 'suche',
-        component: SucheBuecherComponent,
+        component: SucheFilmeComponent,
     },
     {
         path: 'create',
-        component: CreateBuchComponent,
+        component: CreateFilmComponent,
         canActivate: [AdminGuard],
-        canDeactivate: [CreateBuchGuard],
+        canDeactivate: [CreateFilmGuard],
     },
     {
         path: 'balkendiagramm',
@@ -60,11 +60,11 @@ const routes: Routes = [
     // id als Pfad-Parameter
     {
         path: ':id',
-        component: DetailsBuchComponent,
+        component: DetailsFilmComponent,
     },
     {
         path: ':id/update',
-        component: UpdateBuchComponent,
+        component: UpdateFilmComponent,
         canActivate: [AdminGuard],
     },
 ];
@@ -73,4 +73,4 @@ const routes: Routes = [
     exports: [RouterModule],
     imports: [RouterModule.forChild(routes)],
 })
-export class BuchRoutingModule {}
+export class FilmRoutingModule {}

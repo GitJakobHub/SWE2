@@ -38,6 +38,6 @@ const BASE_PATH = '/rest';
 export const BASE_URI = `${SCHEME}://${SERVERNAME}:${PORT}${BASE_PATH}`;
 
 /**
- * Pfad beim REST-Server fuer buecher
+ * Pfad beim REST-Server fuer filme
  */
-export const BUECHER_PATH_REST = 'buecher';
+export const FILME_PATH_REST = 'filme';

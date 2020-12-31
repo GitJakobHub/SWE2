@@ -21,7 +21,7 @@ import type { Suchkriterien } from '../shared';
 import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 
 /**
- * Komponente f&uuml;r das Tag <code>&lt;hs-suche-buecher&gt;</code>, die aus
+ * Komponente f&uuml;r das Tag <code>&lt;hs-suche-filme&gt;</code>, die aus
  * den Kindkomponenten f&uuml;r diese Tags besteht:
  * <ul>
  *  <li> <code>hs-suchformular</code>
@@ -29,15 +29,15 @@ import { Title } from '@angular/platform-browser'; // eslint-disable-line @types
  * </ul>
  */
 @Component({
-    selector: 'hs-suche-buecher',
-    templateUrl: './suche-buecher.component.html',
+    selector: 'hs-suche-filme',
+    templateUrl: './suche-filme.component.html',
 })
-export class SucheBuecherComponent implements OnInit {
+export class SucheFilmeComponent implements OnInit {
     suchkriterien!: Suchkriterien;
 
     // Wird von der JS-Engine aufgerufen
     constructor(private readonly titleService: Title) {
-        console.log('SucheBuecherComponent.constructor()');
+        console.log('SucheFilmeComponent.constructor()');
     }
 
     // Wird von Angular aufgerufen, wenn der DOM-Baum fertig ist,
@@ -58,7 +58,7 @@ export class SucheBuecherComponent implements OnInit {
      */
     setSuchkriterien($event: Suchkriterien) {
         console.log(
-            'SucheBuecherComponent.setSuchkriterien(): suchkriterien=',
+            'SucheFilmeComponent.setSuchkriterien(): suchkriterien=',
             $event,
         );
         this.suchkriterien = $event;

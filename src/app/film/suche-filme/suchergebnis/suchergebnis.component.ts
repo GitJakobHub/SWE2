@@ -24,7 +24,7 @@ import { HttpStatus, easeIn, easeOut } from '../../../shared';
 import type { OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { first, tap } from 'rxjs/operators';
 import { AuthService } from '../../../auth/auth.service';
-import { Buch, BuchService, FindError, RemoveError } from '../../shared';
+import { Film, FilmService, FindError, RemoveError } from '../../shared';
 import { NgLocalization } from '@angular/common';
 import type { Suchkriterien } from '../../shared';
 
@@ -49,14 +49,14 @@ export class SuchergebnisComponent implements OnChanges, OnInit {
 
     waiting = false;
 
-    buecher: Buch[] = [];
+    filme: Film[] = [];
     errorMsg: string | undefined;
     isAdmin!: boolean;
 
     // Empfehlung: Konstruktor nur fuer DI
     // eslint-disable-next-line max-params
     constructor(
-        private readonly buchService: BuchService,
+        private readonly filmService: FilmService,
         private readonly route: ActivatedRoute,
         private readonly router: Router,
         private readonly authService: AuthService,
@@ -87,7 +87,7 @@ export class SuchergebnisComponent implements OnChanges, OnInit {
             'SuchergebnisComponent.ngOnChanges(): suchkriterien=',
             this.suchkriterien,
         );
-        this.buchService
+        this.filmService
             .find(this.suchkriterien)
             .pipe(
                 tap(result => this.setProps(result)),
@@ -96,7 +96,7 @@ export class SuchergebnisComponent implements OnChanges, OnInit {
             .subscribe();
     }
 
-    private setProps(result: Buch[] | FindError) {
+    private setProps(result: Film[] | FindError) {
         this.waiting = false;
 
         if (result instanceof FindError) {
@@ -104,8 +104,8 @@ export class SuchergebnisComponent implements OnChanges, OnInit {
             return;
         }
 
-        this.buecher = result;
-        console.log('SuchergebnisComponent.setProps(): buecher=', this.buecher);
+        this.filme = result;
+        console.log('SuchergebnisComponent.setProps(): filme=', this.filme);
         this.errorMsg = undefined;
     }
 
@@ -146,36 +146,36 @@ export class SuchergebnisComponent implements OnChanges, OnInit {
             schlagwoerter: { javascript: false, typescript: false },
         };
 
-        this.buecher = [];
+        this.filme = [];
         this.waiting = false;
     }
 
     /**
-     * Das ausgew&auml;hlte bzw. angeklickte Buch in der Detailsseite anzeigen.
-     * @param buch Das ausgew&auml;hlte Buch
+     * Das ausgew&auml;hlte bzw. angeklickte Film in der Detailsseite anzeigen.
+     * @param film Das ausgew&auml;hlte Film
      */
-    onClick(buch: Buch) {
-        console.log('SuchergebnisComponent.onClick(): buch=', buch);
+    onClick(film: Film) {
+        console.log('SuchergebnisComponent.onClick(): film=', film);
         // Puffern im Singleton, um nicht erneut zu suchen
-        this.buchService.buch = buch;
+        this.filmService.film = film;
         // TODO: NavigationExtras beim Routing
         // https://github.com/angular/angular/pull/27198
         // https://github.com/angular/angular/commit/67f4a5d4bd3e8e6a35d85500d630d94db061900b
         /* eslint-disable object-curly-newline */
-        return this.router.navigate(['..', buch._id], {
+        return this.router.navigate(['..', film._id], {
             relativeTo: this.route,
         });
     }
 
     /**
-     * Das ausgew&auml;hlte bzw. angeklickte Buch l&ouml;schen.
-     * @param buch Das ausgew&auml;hlte Buch
+     * Das ausgew&auml;hlte bzw. angeklickte Film l&ouml;schen.
+     * @param film Das ausgew&auml;hlte Film
      */
-    onRemove(buch: Buch) {
-        console.log('SuchergebnisComponent.onRemove(): buch=', buch);
+    onRemove(film: Film) {
+        console.log('SuchergebnisComponent.onRemove(): film=', film);
 
-        return this.buchService
-            .remove(buch)
+        return this.filmService
+            .remove(film)
             .pipe(
                 tap(result => {
                     if (result instanceof RemoveError) {
@@ -185,7 +185,7 @@ export class SuchergebnisComponent implements OnChanges, OnInit {
                         return;
                     }
 
-                    this.buecher = this.buecher.filter(b => b._id !== buch._id);
+                    this.filme = this.filme.filter(b => b._id !== film._id);
                 }),
                 first(),
             )

@@ -15,10 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { BuchService, UpdateError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { FilmService, UpdateError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Component, Input } from '@angular/core';
 import { HOME_PATH, HttpStatus } from '../../../shared';
-import type { Buch } from '../../shared';
+import type { Film } from '../../shared';
 import { FormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import type { OnInit } from '@angular/core';
@@ -33,16 +33,16 @@ import { first } from 'rxjs/operators';
     templateUrl: './update-stammdaten.component.html',
 })
 export class UpdateStammdatenComponent implements OnInit {
-    // <hs-update-stammdaten [buch]="...">
+    // <hs-update-stammdaten [film]="...">
     @Input()
-    buch!: Buch;
+    film!: Film;
 
     readonly form = new FormGroup({});
 
     errorMsg: string | undefined = undefined;
 
     constructor(
-        private readonly buchService: BuchService,
+        private readonly filmService: FilmService,
         private readonly router: Router,
     ) {
         console.log('UpdateStammdatenComponent.constructor()');
@@ -50,14 +50,14 @@ export class UpdateStammdatenComponent implements OnInit {
 
     /**
      * Das Formular als Gruppe von Controls initialisieren und mit den
-     * Stammdaten des zu &auml;ndernden Buchs vorbelegen.
+     * Stammdaten des zu &auml;ndernden Films vorbelegen.
      */
     ngOnInit() {
-        console.log('UpdateStammdatenComponent.ngOnInit(): buch=', this.buch);
+        console.log('UpdateStammdatenComponent.ngOnInit(): film=', this.film);
     }
 
     /**
-     * Die aktuellen Stammdaten f&uuml;r das angezeigte Buch-Objekt
+     * Die aktuellen Stammdaten f&uuml;r das angezeigte Film-Objekt
      * zur&uuml;ckschreiben.
      * @return false, um das durch den Button-Klick ausgel&ouml;ste Ereignis
      *         zu konsumieren.
@@ -71,19 +71,19 @@ export class UpdateStammdatenComponent implements OnInit {
         }
 
         // rating, preis und rabatt koennen im Formular nicht geaendert werden
-        this.buch.updateStammdaten(
+        this.film.updateStammdaten(
             this.form.value.titel,
             this.form.value.art,
             this.form.value.verlag,
             this.form.value.rating,
-            this.buch.datum,
-            this.buch.preis,
-            this.buch.rabatt,
+            this.film.datum,
+            this.film.preis,
+            this.film.rabatt,
             this.form.value.isbn,
         );
-        console.log('buch=', this.buch);
+        console.log('film=', this.film);
 
-        const next = async (result: Buch | UpdateError) => {
+        const next = async (result: Film | UpdateError) => {
             if (result instanceof UpdateError) {
                 this.handleError(result);
                 return;
@@ -91,7 +91,7 @@ export class UpdateStammdatenComponent implements OnInit {
 
             await this.router.navigate([HOME_PATH]);
         };
-        this.buchService.update(this.buch).pipe(first()).subscribe({ next });
+        this.filmService.update(this.film).pipe(first()).subscribe({ next });
 
         // damit das (Submit-) Ereignis konsumiert wird und nicht an
         // uebergeordnete Eltern-Komponenten propagiert wird bis zum

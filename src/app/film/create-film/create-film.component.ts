@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Buch, BuchService, SaveError } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Film, FilmService, SaveError } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { HOME_PATH, HttpStatus } from '../../shared';
 import { first, tap } from 'rxjs/operators';
 import { Component } from '@angular/core';
@@ -26,14 +26,14 @@ import { Router } from '@angular/router'; // eslint-disable-line @typescript-esl
 import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 
 /**
- * Komponente mit dem Tag &lt;create-buch&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Buch zu realisieren.
+ * Komponente mit dem Tag &lt;create-film&gt;, um das Erfassungsformular
+ * f&uuml;r ein neues Film zu realisieren.
  */
 @Component({
-    selector: 'hs-create-buch',
-    templateUrl: './create-buch.component.html',
+    selector: 'hs-create-film',
+    templateUrl: './create-film.component.html',
 })
-export class CreateBuchComponent implements OnInit {
+export class CreateFilmComponent implements OnInit {
     form = new FormGroup({});
 
     showWarning = false;
@@ -43,21 +43,21 @@ export class CreateBuchComponent implements OnInit {
     errorMsg: string | undefined = undefined;
 
     constructor(
-        private readonly buchService: BuchService,
+        private readonly filmService: FilmService,
         private readonly router: Router,
         private readonly titleService: Title,
     ) {
-        console.log('CreateBuchComponent.constructor()');
+        console.log('CreateFilmComponent.constructor()');
         console.log('Injizierter Router:', router);
     }
 
     ngOnInit() {
-        this.titleService.setTitle('Neues Buch');
+        this.titleService.setTitle('Neues Film');
     }
 
     /**
      * Die Methode <code>save</code> realisiert den Event-Handler, wenn das
-     * Formular abgeschickt wird, um ein neues Buch anzulegen.
+     * Formular abgeschickt wird, um ein neues Film anzulegen.
      * @return false, um das durch den Button-Klick ausgel&ouml;ste Ereignis
      *         zu konsumieren.
      */
@@ -72,16 +72,16 @@ export class CreateBuchComponent implements OnInit {
 
         if (this.form.invalid) {
             console.log(
-                'CreateBuchComponent.onSave(): Validierungsfehler',
+                'CreateFilmComponent.onSave(): Validierungsfehler',
                 this.form,
             );
         }
 
-        const neuesBuch = Buch.fromForm(this.form.value);
-        console.log('CreateBuchComponent.onSave(): neuesBuch=', neuesBuch);
+        const neuesFilm = Film.fromForm(this.form.value);
+        console.log('CreateFilmComponent.onSave(): neuesFilm=', neuesFilm);
 
-        this.buchService
-            .save(neuesBuch)
+        this.filmService
+            .save(neuesFilm)
             .pipe(
                 tap(result => this.setProps(result)),
                 first(),
@@ -100,13 +100,13 @@ export class CreateBuchComponent implements OnInit {
         this.errorMsg = undefined;
 
         const id = result;
-        console.log(`CreateBuchComponent.onSave(): id=${id}`);
+        console.log(`CreateFilmComponent.onSave(): id=${id}`);
     }
 
     private handleError(err: SaveError) {
         const { statuscode } = err;
         console.log(
-            `CreateBuchComponent.handleError(): statuscode=${statuscode}, err=`,
+            `CreateFilmComponent.handleError(): statuscode=${statuscode}, err=`,
             err,
         );
 

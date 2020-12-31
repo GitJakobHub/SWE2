@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Buch, BuchService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Film, FilmService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { first, map } from 'rxjs/operators';
 import { Component } from '@angular/core';
 import type { DataItem } from '@swimlane/ngx-charts';
@@ -35,7 +35,7 @@ export class TortendiagrammComponent implements OnInit {
     dataItems!: DataItem[];
 
     constructor(
-        private readonly buchService: BuchService,
+        private readonly filmService: FilmService,
         private readonly titleService: Title,
     ) {
         console.log('TortendiagrammComponent.constructor()');
@@ -51,13 +51,13 @@ export class TortendiagrammComponent implements OnInit {
     }
 
     private setDataItems() {
-        const buecher$ = this.buchService.find() as Observable<Buch[]>;
-        buecher$
+        const filme$ = this.filmService.find() as Observable<Film[]>;
+        filme$
             .pipe(
-                map(buecher =>
-                    buecher
-                        .filter(buch => buch.rating !== undefined)
-                        .map(buch => this.toDataItem(buch)),
+                map(filme =>
+                    filme
+                        .filter(film => film.rating !== undefined)
+                        .map(film => this.toDataItem(film)),
                 ),
                 first(),
             )
@@ -66,10 +66,10 @@ export class TortendiagrammComponent implements OnInit {
     }
 
     // https://stackblitz.com/edit/swimlane-pie-chart?embed=1&file=app/app.component.ts
-    private toDataItem(buch: Buch) {
+    private toDataItem(film: Film) {
         const dataItem: DataItem = {
-            name: buch._id as string,
-            value: buch.rating as number,
+            name: film._id as string,
+            value: film.rating as number,
         };
         return dataItem;
     }

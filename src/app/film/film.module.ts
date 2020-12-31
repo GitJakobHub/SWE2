@@ -16,25 +16,25 @@
  */
 
 import { BalkendiagrammModule } from './diagramme/balkendiagramm.module';
-import { BuchRoutingModule } from './buch-routing.module';
-import { CreateBuchModule } from './create-buch/create-buch.module';
-import { DetailsBuchModule } from './details-buch/details-buch.module';
+import { FilmRoutingModule } from './film-routing.module';
+import { CreateFilmModule } from './create-film/create-film.module';
+import { DetailsFilmModule } from './details-film/details-film.module';
 import { LiniendiagrammModule } from './diagramme/liniendiagramm.module';
 import { NgModule } from '@angular/core';
-import { SucheBuecherModule } from './suche-buecher/suche-buecher.module';
+import { SucheFilmeModule } from './suche-filme/suche-filme.module';
 import { TortendiagrammModule } from './diagramme/tortendiagramm.module';
-import { UpdateBuchModule } from './update-buch/update-buch.module';
+import { UpdateFilmModule } from './update-film/update-film.module';
 
 @NgModule({
     imports: [
         BalkendiagrammModule,
-        CreateBuchModule,
-        DetailsBuchModule,
+        CreateFilmModule,
+        DetailsFilmModule,
         LiniendiagrammModule,
-        SucheBuecherModule,
+        SucheFilmeModule,
         TortendiagrammModule,
-        UpdateBuchModule,
-        BuchRoutingModule,
+        UpdateFilmModule,
+        FilmRoutingModule,
     ],
 })
-export class BuchModule {}
+export class FilmModule {}

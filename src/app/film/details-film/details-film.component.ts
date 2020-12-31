@@ -18,8 +18,8 @@
 import { first, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { AuthService } from '../../auth/auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
-import type { Buch } from '../shared';
-import { BuchService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import type { Film } from '../shared';
+import { FilmService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Component } from '@angular/core';
 import { FindError } from './../shared/errors';
 import { HttpStatus } from '../../shared';
@@ -27,16 +27,16 @@ import type { OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-buch</code>
+ * Komponente f&uuml;r das Tag <code>hs-details-film</code>
  */
 @Component({
-    selector: 'hs-details-buch',
-    templateUrl: './details-buch.component.html',
+    selector: 'hs-details-film',
+    templateUrl: './details-film.component.html',
 })
-export class DetailsBuchComponent implements OnInit {
+export class DetailsFilmComponent implements OnInit {
     waiting = true;
 
-    buch: Buch | undefined;
+    film: Film | undefined;
 
     errorMsg: string | undefined;
 
@@ -44,23 +44,23 @@ export class DetailsBuchComponent implements OnInit {
 
     // eslint-disable-next-line max-params
     constructor(
-        private readonly buchService: BuchService,
+        private readonly filmService: FilmService,
         private readonly titleService: Title,
         private readonly route: ActivatedRoute,
         private readonly authService: AuthService,
     ) {
-        console.log('DetailsBuchComponent.constructor()');
+        console.log('DetailsFilmComponent.constructor()');
     }
 
     ngOnInit() {
-        // Pfad-Parameter aus /buecher/:id beobachten, ohne dass
+        // Pfad-Parameter aus /filme/:id beobachten, ohne dass
         // bisher ein JavaScript-Ereignis, wie z.B. click, eingetreten ist.
         // UUID (oder Mongo-ID) ist ein String
 
         const id = this.route.snapshot.paramMap.get('id') ?? undefined;
-        console.log('DetailsBuchComponent.ngOnInit(): id=', id);
+        console.log('DetailsFilmComponent.ngOnInit(): id=', id);
 
-        this.buchService
+        this.filmService
             .findById(id)
             .pipe(
                 tap(result => this.setProps(result)),
@@ -72,7 +72,7 @@ export class DetailsBuchComponent implements OnInit {
         this.isAdmin = this.authService.isAdmin;
     }
 
-    private setProps(result: Buch | FindError) {
+    private setProps(result: Film | FindError) {
         this.waiting = false;
 
         if (result instanceof FindError) {
@@ -80,10 +80,10 @@ export class DetailsBuchComponent implements OnInit {
             return;
         }
 
-        this.buch = result;
+        this.film = result;
         this.errorMsg = undefined;
 
-        const titel = `Details ${this.buch._id}`;
+        const titel = `Details ${this.film._id}`;
         this.titleService.setTitle(titel);
     }
 
@@ -91,11 +91,11 @@ export class DetailsBuchComponent implements OnInit {
         const { statuscode } = err;
         console.log(`DetailsComponent.handleError(): statuscode=${statuscode}`);
 
-        this.buch = undefined;
+        this.film = undefined;
 
         switch (statuscode) {
             case HttpStatus.NOT_FOUND:
-                this.errorMsg = 'Kein Buch gefunden.';
+                this.errorMsg = 'Kein Film gefunden.';
                 break;
             case HttpStatus.TOO_MANY_REQUESTS:
                 this.errorMsg =
