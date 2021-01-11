@@ -22,9 +22,14 @@ import { FilmModule } from './film/film.module';
 import { FooterModule } from './layout/footer/footer.module';
 import { HeaderModule } from './layout/header/header.module';
 import { HomeModule } from './home/home.module';
+import { HttpClient } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 import { MainModule } from './layout/main/main.module';
 import { NgModule } from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { authInterceptorProviders } from './auth/auth.interceptor';
 import { environment } from '../environments/environment';
 
@@ -54,7 +59,14 @@ import { environment } from '../environments/environment';
 
         // BrowserAnimationsModule importiert BrowserModul
         BrowserAnimationsModule,
-
+        HttpClient,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: httpTranslateLoader,
+                deps: [HttpClient],
+            },
+        }),
         AppRoutingModule,
         HomeModule,
         FilmModule,
@@ -72,3 +84,8 @@ import { environment } from '../environments/environment';
     bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+// AOT compilation support
+export function httpTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+}

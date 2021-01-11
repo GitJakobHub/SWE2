@@ -18,6 +18,8 @@
 // "core" enthaelt Funktionalitaet, damit die Webanwendung im Browser laeuft
 import { Component, VERSION } from '@angular/core';
 
+import { TranslateService } from '@ngx-translate/core';
+
 // JIT (= Just-in-time) Compiler: Uebersetzung zur Laufzeit, d.h. dynamisch
 // AoT (= Ahead-of-Time) Compiler: statische Übersetzung fuehrt zu weniger Code bzw. kleinerem Bundle
 
@@ -119,10 +121,12 @@ import { Component, VERSION } from '@angular/core';
 export class AppComponent {
     title = 'acme';
 
-    constructor() {
+    constructor(public translate: TranslateService) {
         console.log('AppComponent.constructor()');
         console.log(`Angular ${VERSION.full}: Die Webanwendung wird gestartet`);
         console.log(new Intl.DateTimeFormat('de').format(new Date()));
+        translate.addLangs(['en', 'de']);
+        translate.setDefaultLang('de');
 
         AppComponent.checkEsVersion();
     }
@@ -156,5 +160,10 @@ export class AppComponent {
             return;
         }
         console.log('ES 2021 wird durch den Webbrowser z.T. unterstuetzt.');
+    }
+
+    switchLang(lang: string) {
+        // eslint-disable-next-line rxjs/no-ignored-observable
+        this.translate.use(lang);
     }
 }
