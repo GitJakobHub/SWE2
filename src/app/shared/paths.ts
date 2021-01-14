@@ -40,4 +40,4 @@ export const BASE_URI = `${SCHEME}://${SERVERNAME}:${PORT}${BASE_PATH}`;
 /**
  * Pfad beim REST-Server fuer filme
  */
-export const FILME_PATH_REST = 'filme';
+export const FILME_PATH_REST = '';

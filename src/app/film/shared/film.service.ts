@@ -28,6 +28,7 @@ import {
     HttpResponse,
 } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
+
 import { Film } from './film';
 import type { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -102,7 +103,8 @@ export class FilmService {
         return (
             this.httpClient
                 /* eslint-disable object-curly-newline */
-                .get<FilmServer[]>(uri, {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                .get<any>(uri, {
                     params,
                 })
                 /* eslint-enable object-curly-newline */
@@ -115,7 +117,9 @@ export class FilmService {
                     }),
 
                     // entweder Observable<FilmServer[]> oder Observable<FindError>
-                    map(result => this.findResultToFilmArray(result)),
+                    map(result =>
+                        this.findResultToFilmArray(result._embedded?.kundeList),
+                    ),
                 )
         );
 
@@ -131,7 +135,7 @@ export class FilmService {
         if (result instanceof FindError) {
             return result;
         }
-
+        console.log('result', result);
         const filme = result.map(film => Film.fromServer(film));
         console.log('FilmService.mapFindResult(): filme=', filme);
         return filme;
