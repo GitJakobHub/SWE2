@@ -20,11 +20,12 @@
 // Bereitgestellt durch das RouterModule
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
+import { Film, FilmService, FindError, RemoveError } from '../../shared';
 import { HttpStatus, easeIn, easeOut } from '../../../shared';
 import type { OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { first, tap } from 'rxjs/operators';
+
 import { AuthService } from '../../../auth/auth.service';
-import { Film, FilmService, FindError, RemoveError } from '../../shared';
 import { NgLocalization } from '@angular/common';
 import type { Suchkriterien } from '../../shared';
 
