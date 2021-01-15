@@ -15,14 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { BasicAuthService } from './basic-auth.service';
 import { CookieService } from './cookie.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Injectable } from '@angular/core';
-import { JwtService } from './jwt.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Subject } from 'rxjs';
 
-export const ROLLE_ADMIN = 'admin';
+// export const ROLLE_ADMIN = 'admin';
 // Spring Security:
-// export const ROLLE_ADMIN = 'ROLE_ADMIN'
+export const ROLLE_ADMIN = 'ROLE_ADMIN';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -34,7 +35,7 @@ export class AuthService {
     readonly rollenSubject$ = new Subject<string[]>();
 
     constructor(
-        private readonly jwtService: JwtService,
+        private readonly basicAuthService: BasicAuthService,
         private readonly cookieService: CookieService,
     ) {
         if (this.isLoggedIn) {
@@ -57,8 +58,8 @@ export class AuthService {
         );
         let rollen: string[] = [];
         try {
-            // this.basicAuthService.login(username, password)
-            rollen = await this.jwtService.login(username, password);
+            rollen = await this.basicAuthService.login(username, password);
+            // rollen = await this.jwtService.login(username, password);
             console.log('AuthService.login()', rollen);
             this.isLoggedInSubject$.next(true);
         } catch (err: unknown) {

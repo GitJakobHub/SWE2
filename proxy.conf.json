@@ -1,9 +1,9 @@
 {
   "/rest": {
-    "target": "https://localhost:3000",
+    "target": "http://localhost",
     "secure": false,
     "pathRewrite": {
-      "^/rest": "/api"    
+      "^/rest": "/kunden/api"   
     }                     
   }                       
 }

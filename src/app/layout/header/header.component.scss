@@ -15,14 +15,14 @@
 
 @import '../../sass/colors';
 
-$gradient: url('/assets/img/gradientBlueSky.png');
+$gradient: url('/assets/img/header.jpg');
 
 // Vorsicht bei CSS-Selektoren: Namespaces, um Kollisionen zu vermeiden
 .hs-nav {
   background-color: $background-color;
   background-image: $gradient;
   background-position: left top;
-  background-repeat: repeat-x;
+  background-repeat: no-repeat;
   // display: block;
 }
 

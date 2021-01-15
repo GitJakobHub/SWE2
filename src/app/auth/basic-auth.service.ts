@@ -16,7 +16,9 @@
  */
 
 import { BASE_URI, HttpStatus } from '../shared';
-import type { CookieService } from './cookie.service';
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import { CookieService } from './cookie.service';
 import { Injectable } from '@angular/core';
 
 enum Rolle {
@@ -42,7 +44,10 @@ export class BasicAuthService {
      * @param password als String
      * @return void
      */
-    async login(username: string | undefined, password: string | undefined) {
+    async login(
+        username: string | undefined,
+        password: string | undefined,
+    ): Promise<string[]> {
         console.log(
             `BasicAuthService.login(): username=${username}, password=${password}`,
         );
@@ -92,6 +97,6 @@ export class BasicAuthService {
             basicAuth,
             roles,
         );
-        return roles;
+        return json[0];
     }
 }
