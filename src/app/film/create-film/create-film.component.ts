@@ -18,6 +18,7 @@
 import { Film, FilmService, SaveError } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { HOME_PATH, HttpStatus } from '../../shared';
 import { first, tap } from 'rxjs/operators';
+
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -27,7 +28,7 @@ import { Title } from '@angular/platform-browser'; // eslint-disable-line @types
 
 /**
  * Komponente mit dem Tag &lt;create-film&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Film zu realisieren.
+ * f&uuml;r einen neuen Film zu realisieren.
  */
 @Component({
     selector: 'hs-create-film',
@@ -52,12 +53,12 @@ export class CreateFilmComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.titleService.setTitle('Neues Film');
+        this.titleService.setTitle('Neuen Film');
     }
 
     /**
      * Die Methode <code>save</code> realisiert den Event-Handler, wenn das
-     * Formular abgeschickt wird, um ein neues Film anzulegen.
+     * Formular abgeschickt wird, um einen neuen Film anzulegen.
      * @return false, um das durch den Button-Klick ausgel&ouml;ste Ereignis
      *         zu konsumieren.
      */
@@ -77,11 +78,11 @@ export class CreateFilmComponent implements OnInit {
             );
         }
 
-        const neuesFilm = Film.fromForm(this.form.value);
-        console.log('CreateFilmComponent.onSave(): neuesFilm=', neuesFilm);
+        const neuenFilm = Film.fromForm(this.form.value);
+        console.log('CreateFilmComponent.onSave(): neuenFilm=', neuenFilm);
 
         this.filmService
-            .save(neuesFilm)
+            .save(neuenFilm)
             .pipe(
                 tap(result => this.setProps(result)),
                 first(),

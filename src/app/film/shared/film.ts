@@ -20,14 +20,14 @@
 const MIN_RATING = 0;
 const MAX_RATING = 5;
 
-export enum Verlag {
-    FOO_VERLAG = 'FOO_VERLAG',
-    BAR_VERLAG = 'BAR_VERLAG',
+export enum Regisseur {
+    UNIVERSAL_STUDIOSLAG = 'UNIVERSAL_STUDIOSLAG',
+    WARNER_BROS = 'WARNER_BROS',
 }
 
 export enum FilmArt {
-    KINDLE = 'KINDLE',
-    DRUCKAUSGABE = 'DRUCKAUSGABE',
+    DREIDIMENSIONAL = '3D',
+    ZWEIDIMENSIONAL = '2D',
 }
 
 // eslint-disable-next-line max-len
@@ -40,7 +40,7 @@ export const ISBN_REGEX = /\d{3}-\d-\d{5}-\d{3}-\d|\d-\d{5}-\d{3}-\d|\d-\d{4}-\d
 export interface FilmShared {
     _id?: string; // eslint-disable-line @typescript-eslint/naming-convention
     titel: string | undefined;
-    verlag?: Verlag | '';
+    regisseur?: Regisseur | '';
     art: FilmArt;
     preis: number;
     rabatt: number | undefined;
@@ -112,7 +112,7 @@ export class Film {
         public titel: string,
         public rating: number | undefined,
         public art: FilmArt,
-        public verlag: Verlag | undefined | '',
+        public regisseur: Regisseur | undefined | '',
         datum: string | undefined,
         public preis: number,
         public rabatt: number,
@@ -157,7 +157,7 @@ export class Film {
             filmServer.titel ?? 'unbekannt',
             filmServer.rating,
             filmServer.art,
-            filmServer.verlag,
+            filmServer.regisseur,
             filmServer.datum,
             filmServer.preis,
             filmServer.rabatt ?? 0,
@@ -192,7 +192,7 @@ export class Film {
             filmForm.titel ?? 'unbekannt',
             Number(filmForm.rating),
             filmForm.art,
-            filmForm.verlag,
+            filmForm.regisseur,
             filmForm.datum,
             filmForm.preis,
             rabatt,
@@ -247,20 +247,20 @@ export class Film {
     }
 
     /**
-     * Abfrage, ob das Film dem angegebenen Verlag zugeordnet ist.
-     * @param verlag der Name des Verlags
-     * @return true, falls das Film dem Verlag zugeordnet ist. Sonst false.
+     * Abfrage, ob das Film dem angegebenen Regisseur zugeordnet ist.
+     * @param regisseur der Name des Regisseurs
+     * @return true, falls das Film dem Regisseur zugeordnet ist. Sonst false.
      */
-    hasVerlag(verlag: string) {
-        return this.verlag === verlag;
+    hasRegisseur(regisseur: string) {
+        return this.regisseur === regisseur;
     }
 
     /**
      * Aktualisierung der Stammdaten des Film-Objekts.
      * @param titel Der neue Filmtitel
      * @param rating Die neue Bewertung
-     * @param art Die neue Filmart (DRUCKAUSGABE oder KINDLE)
-     * @param verlag Der neue Verlag
+     * @param art Die neue Filmart (2D oder 3D)
+     * @param regisseur Der neue Regisseur
      * @param preis Der neue Preis
      * @param rabatt Der neue Rabatt
      */
@@ -268,7 +268,7 @@ export class Film {
     updateStammdaten(
         titel: string,
         art: FilmArt,
-        verlag: Verlag | undefined | '',
+        regisseur: Regisseur | undefined | '',
         rating: number | undefined,
         datum: Date | undefined,
         preis: number,
@@ -277,7 +277,7 @@ export class Film {
     ) {
         this.titel = titel;
         this.art = art;
-        this.verlag = verlag;
+        this.regisseur = regisseur;
         this.rating = rating;
         this.ratingArray =
             rating === undefined
@@ -335,7 +335,7 @@ export class Film {
             titel: this.titel,
             rating: this.rating,
             art: this.art,
-            verlag: this.verlag,
+            regisseur: this.regisseur,
             datum,
             preis: this.preis,
             rabatt: this.rabatt,

@@ -20,9 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateArtModule } from './update-art.module';
 import { UpdateIsbnModule } from './update-isbn.module';
 import { UpdateRatingModule } from './update-rating.module';
+import { UpdateRegisseurModule } from './update-regisseur.module';
 import { UpdateStammdatenComponent } from './update-stammdaten.component';
 import { UpdateTitelModule } from './update-titel.module';
-import { UpdateVerlagModule } from './update-verlag.module';
 
 @NgModule({
     declarations: [UpdateStammdatenComponent],
@@ -33,7 +33,7 @@ import { UpdateVerlagModule } from './update-verlag.module';
         UpdateIsbnModule,
         UpdateRatingModule,
         UpdateTitelModule,
-        UpdateVerlagModule,
+        UpdateRegisseurModule,
     ],
 })
 export class UpdateStammdatenModule {}

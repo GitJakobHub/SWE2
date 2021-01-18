@@ -17,26 +17,27 @@
 
 import { Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 
 /**
- * Komponente mit dem Tag &lt;hs-create-verlag&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Film zu realisieren.
+ * Komponente mit dem Tag &lt;hs-create-regisseur&gt;, um das Erfassungsformular
+ * f&uuml;r einen neuen Film zu realisieren.
  */
 @Component({
-    selector: 'hs-create-verlag',
-    templateUrl: './create-verlag.component.html',
+    selector: 'hs-create-regisseur',
+    templateUrl: './create-regisseur.component.html',
 })
-export class CreateVerlagComponent implements OnInit {
+export class CreateRegisseurComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    readonly verlag = new FormControl(undefined, Validators.required);
+    readonly regisseur = new FormControl(undefined, Validators.required);
 
     ngOnInit() {
-        console.log('CreateVerlagComponent.ngOnInit');
+        console.log('CreateRegisseurComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.form.addControl('verlag', this.verlag);
+        this.form.addControl('regisseur', this.regisseur);
     }
 }

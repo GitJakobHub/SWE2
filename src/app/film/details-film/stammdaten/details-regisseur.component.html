@@ -1,5 +1,5 @@
 <!--
-    Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+    Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,13 +14,14 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<div class="row">
-  <label class="col col-2 col-form-label gy-3">Verlag</label>
-  <div class="col col-10 gy-3">
-    <select class="form-select" [(ngModel)]="verlag" name="verlag">
-      <option value=""></option>
-      <option value="FOO_VERLAG">Foo Verlag</option>
-      <option value="BAR_VERLAG">Bar Verlag</option>
-    </select>
+
+<div class="row mt-2">
+  <label class="col col-1"> Regisseur </label>
+  <div class="col col-11">
+    <span [ngSwitch]="regisseur">
+      <span *ngSwitchCase="'UNIVERSAL_STUDIOSLAG'">Universal Studios</span>
+      <span *ngSwitchCase="'WARNER_BROS'">Warner Bros.</span>
+      <span *ngSwitchDefault>unbekannt</span>
+    </span>
   </div>
 </div>

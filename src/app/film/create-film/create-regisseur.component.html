@@ -16,25 +16,25 @@
 -->
 
 <div class="row">
-  <label class="col col-2 col-form-label gy-3">Verlag *</label>
+  <label class="col col-2 col-form-label gy-3">Regisseur *</label>
   <div class="col col-10 gy-3" [formGroup]="form">
     <div class="input-group">
       <select
         class="form-select"
-        formControlName="verlag"
+        formControlName="regisseur"
         required
-        [class.is-invalid]="verlag.invalid && verlag.touched"
-        [class.is-valid]="verlag.valid && verlag.touched"
+        [class.is-invalid]="regisseur.invalid && regisseur.touched"
+        [class.is-valid]="regisseur.valid && regisseur.touched"
       >
-        <option value="">Einen Verlag ausw&auml;hlen</option>
-        <option value="FOO_VERLAG">Foo Verlag</option>
-        <option value="BAR_VERLAG">Bar Verlag</option>
+        <option value="">Einen Regisseur ausw&auml;hlen</option>
+        <option value="UNIVERSAL_STUDIOSLAG">Universal Studios</option>
+        <option value="WARNER_BROS">Warner Bros.</option>
       </select>
 
-      <div *ngIf="verlag.invalid && verlag.touched" class="invalid-feedback">
-        <div *ngIf="verlag.errors && verlag.errors.required">
+      <div *ngIf="regisseur.invalid && regisseur.touched" class="invalid-feedback">
+        <div *ngIf="regisseur.errors && regisseur.errors.required">
           <i class="material-icons">error</i>
-          <span class="ml-1"> Ein Verlag ist erforderlich. </span>
+          <span class="ml-1"> Ein Regisseur ist erforderlich. </span>
         </div>
       </div>
     </div>

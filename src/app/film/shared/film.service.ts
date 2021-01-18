@@ -18,7 +18,7 @@
  */
 
 import { BASE_URI, FILME_PATH_REST } from '../../shared';
-import type { FilmArt, FilmServer, Verlag } from './film';
+import type { FilmArt, FilmServer, Regisseur } from './film';
 import { FindError, RemoveError, SaveError, UpdateError } from './errors';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
@@ -37,7 +37,7 @@ import { of } from 'rxjs';
 
 export interface Suchkriterien {
     titel: string;
-    verlag: Verlag | '';
+    regisseur: Regisseur | '';
     art: FilmArt | '';
     schlagwoerter: { javascript: boolean; typescript: boolean };
 }
@@ -210,8 +210,8 @@ export class FilmService {
     }
 
     /**
-     * Ein neues Film anlegen
-     * @param neuesFilm Das JSON-Objekt mit dem neuen Film
+     * Einen neuen Film anlegen
+     * @param neuenFilm Das JSON-Objekt mit dem neuen Film
      */
     save(film: Film): Observable<string | SaveError> {
         console.log('FilmService.save(): film=', film);
@@ -367,7 +367,7 @@ export class FilmService {
             return httpParams;
         }
 
-        const { titel, verlag, art, schlagwoerter } = suchkriterien;
+        const { titel, regisseur, art, schlagwoerter } = suchkriterien;
         const { javascript, typescript } = schlagwoerter;
 
         if (titel !== '') {
@@ -376,8 +376,8 @@ export class FilmService {
         if (art !== '') {
             httpParams = httpParams.set('art', art);
         }
-        if (verlag !== '') {
-            httpParams = httpParams.set('verlag', verlag);
+        if (regisseur !== '') {
+            httpParams = httpParams.set('regisseur', regisseur);
         }
         if (javascript) {
             httpParams = httpParams.set('javascript', 'true');

@@ -15,13 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { CreateRegisseurComponent } from './create-regisseur.component';
 import { NgModule } from '@angular/core';
-import { SucheVerlagComponent } from './suche-verlag.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [SucheVerlagComponent],
-    exports: [SucheVerlagComponent],
-    imports: [FormsModule],
+    declarations: [CreateRegisseurComponent],
+    exports: [CreateRegisseurComponent],
+    imports: [CommonModule, ReactiveFormsModule],
 })
-export class SucheVerlagModule {}
+export class CreateRegisseurModule {}

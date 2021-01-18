@@ -16,35 +16,36 @@
  */
 
 import { Component, Input } from '@angular/core';
+
 import { FormControl } from '@angular/forms';
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
-import type { Verlag } from '../../shared/film';
+import type { Regisseur } from '../../shared/film';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-verlag</code>
+ * Komponente f&uuml;r das Tag <code>hs-update-regisseur</code>
  */
 @Component({
-    selector: 'hs-update-verlag',
-    templateUrl: './update-verlag.component.html',
+    selector: 'hs-update-regisseur',
+    templateUrl: './update-regisseur.component.html',
 })
-export class UpdateVerlagComponent implements OnInit {
-    // <hs-update-verlag [form]="form" [currentValue]="...">
+export class UpdateRegisseurComponent implements OnInit {
+    // <hs-update-regisseur [form]="form" [currentValue]="...">
     @Input()
     form!: FormGroup;
 
     @Input()
-    currentValue: Verlag | undefined | '';
+    currentValue: Regisseur | undefined | '';
 
-    verlag!: FormControl;
+    regisseur!: FormControl;
 
     ngOnInit() {
         console.log(
-            'UpdateVerlagComponent.ngOnInit(): currentValue=',
+            'UpdateRegisseurComponent.ngOnInit(): currentValue=',
             this.currentValue,
         );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.verlag = new FormControl(this.currentValue);
-        this.form.addControl('verlag', this.verlag);
+        this.regisseur = new FormControl(this.currentValue);
+        this.form.addControl('regisseur', this.regisseur);
     }
 }
