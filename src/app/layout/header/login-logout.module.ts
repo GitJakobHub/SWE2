@@ -19,11 +19,12 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoginLogoutComponent } from './login-logout.component';
+import { MaterialModule } from '../../material.module';
 import { NgModule } from '@angular/core';
 
 @NgModule({
     declarations: [LoginLogoutComponent],
     exports: [LoginLogoutComponent],
-    imports: [CommonModule, FormsModule],
+    imports: [CommonModule, FormsModule, MaterialModule],
 })
 export class LoginLogoutModule {}
