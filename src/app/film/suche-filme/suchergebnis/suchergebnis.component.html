@@ -41,7 +41,7 @@
               <th>Nr.</th>
               <th>ID</th>
               <th>Titel</th>
-              <th>Verlag</th>
+              <th>Regisseur</th>
               <th>Schlagw&ouml;rter</th>
               <th>
                 <span class="visually-hidden">Spalte f&uuml;r Details</span>
@@ -61,8 +61,8 @@
               <td (click)="onClick(b)">{{ b.titel }}</td>
               <td>
                 <span [ngSwitch]="b.verlag">
-                  <span *ngSwitchCase="'FOO_VERLAG'">Foo Verlag</span>
-                  <span *ngSwitchCase="'BAR_VERLAG'">Bar Verlag</span>
+                  <span *ngSwitchCase="'FOO_VERLAG'">Universal Studioserlag</span>
+                  <span *ngSwitchCase="'BAR_VERLAG'">Warner Bros.erlag</span>
                   <span *ngSwitchDefault>unbekannt</span>
                 </span>
               </td>

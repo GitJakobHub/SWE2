@@ -40,7 +40,7 @@ https://{{host}}/filme?isbn=000-0-00000-000-1
 https://{{host}}/filme?javascript=true&typescript=true
 
 ### Suche mit gueltiger Filmart
-https://{{host}}/filme?art=KINDLE
+https://{{host}}/filme?art=3DIMENSIONAL
 
 ### Suche mit gueltigem Rating
 https://{{host}}/filme?rating=1
@@ -48,14 +48,14 @@ https://{{host}}/filme?rating=1
 ### Suche lieferbare Filme
 https://{{host}}/filme?lieferbar=true
 
-### Neues Film anlegen
+### Neuen Film anlegen
 POST https://{{host}}/filme
 Content-Type: application/json
 Authorization: {{token}}
 
 < ./config/rest/film-neu.json
 
-### Neues Film mit ungueltigen Daten anlegen
+### Neuen Film mit ungueltigen Daten anlegen
 POST https://{{host}}/filme
 Content-Type: application/json
 Authorization: {{token}}

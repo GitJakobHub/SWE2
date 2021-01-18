@@ -23,7 +23,7 @@
     <div class="input-group">
       <input
         id="rabattInput"
-        placeholder="Rabatt in Prozent, z.B. 5.67"
+        placeholder="Rabatt in Prozent, z.B. 10.00"
         required
         type="number"
         class="form-control"
@@ -38,7 +38,7 @@
       <div *ngIf="rabatt.errors && rabatt.errors.required">
         <i class="material-icons">error</i>
         <span class="ml-1">
-          Ein Rabatt muss in Prozent eingegeben werden, z.B. 5.67
+          Der Rabatt muss als Prozentwert eigegebenen werden, z.B. 10.00
         </span>
       </div>
     </div>

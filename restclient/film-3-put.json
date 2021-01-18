@@ -1,8 +1,8 @@
 {
   "titel": "Testt",
   "rating": 5,
-  "art": "KINDLE",
-  "verlag": "FOO_VERLAG",
+  "art": "3DIMENSIONAL",
+  "regisseur": "Universal_Studios",
   "preis": 9999,
   "rabatt": 99,
   "lieferbar": true,

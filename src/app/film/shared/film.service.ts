@@ -210,8 +210,8 @@ export class FilmService {
     }
 
     /**
-     * Ein neues Film anlegen
-     * @param neuesFilm Das JSON-Objekt mit dem neuen Film
+     * Einen neuen Film anlegen
+     * @param neuenFilm Das JSON-Objekt mit dem neuen Film
      */
     save(film: Film): Observable<string | SaveError> {
         console.log('FilmService.save(): film=', film);

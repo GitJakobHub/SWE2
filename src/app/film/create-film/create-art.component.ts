@@ -16,13 +16,14 @@
  */
 
 import { Component, Input } from '@angular/core';
+
 import { FormControl } from '@angular/forms';
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 
 /**
  * Komponente mit dem Tag &lt;hs-create-art&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Film zu realisieren.
+ * f&uuml;r einen neuen Film zu realisieren.
  */
 @Component({
     selector: 'hs-create-art',
@@ -32,7 +33,7 @@ export class CreateArtComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    readonly art = new FormControl('DRUCKAUSGABE');
+    readonly art = new FormControl('2DIMENSIONAL');
 
     ngOnInit() {
         console.log('CreateArtComponent.ngOnInit');

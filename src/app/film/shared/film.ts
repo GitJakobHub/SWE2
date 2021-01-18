@@ -26,8 +26,8 @@ export enum Verlag {
 }
 
 export enum FilmArt {
-    KINDLE = 'KINDLE',
-    DRUCKAUSGABE = 'DRUCKAUSGABE',
+    DREIDIMENSIONAL = '3DIMENSIONAL',
+    ZWEIDIMENSIONAL = '2DIMENSIONAL',
 }
 
 // eslint-disable-next-line max-len
@@ -259,7 +259,7 @@ export class Film {
      * Aktualisierung der Stammdaten des Film-Objekts.
      * @param titel Der neue Filmtitel
      * @param rating Die neue Bewertung
-     * @param art Die neue Filmart (DRUCKAUSGABE oder KINDLE)
+     * @param art Die neue Filmart (2DIMENSIONAL oder 3DIMENSIONAL)
      * @param verlag Der neue Verlag
      * @param preis Der neue Preis
      * @param rabatt Der neue Rabatt

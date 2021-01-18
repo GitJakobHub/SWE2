@@ -17,12 +17,13 @@
 
 import { Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 
 /**
  * Komponente mit dem Tag &lt;hs-create-titel&gt;, um das Erfassungsformular
- * f&uuml;r ein neues Film zu realisieren.
+ * f&uuml;r einen neuen Film zu realisieren.
  */
 @Component({
     // moduleId: module.id,
