@@ -16,11 +16,11 @@
 -->
 
 <div class="row mt-2">
-  <label class="col col-1"> Verlag </label>
+  <label class="col col-1"> Regisseur </label>
   <div class="col col-11">
-    <span [ngSwitch]="verlag">
-      <span *ngSwitchCase="'FOO_VERLAG'">Universal Studioserlag</span>
-      <span *ngSwitchCase="'BAR_VERLAG'">Warner Bros.erlag</span>
+    <span [ngSwitch]="regisseur">
+      <span *ngSwitchCase="'UNIVERSAL_STUDIOSLAG'">Universal Studios</span>
+      <span *ngSwitchCase="'WARNER_BROS'">Warner Bros.</span>
       <span *ngSwitchDefault>unbekannt</span>
     </span>
   </div>

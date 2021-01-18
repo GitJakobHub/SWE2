@@ -33,7 +33,7 @@ export class CreateArtComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    readonly art = new FormControl('2DIMENSIONAL');
+    readonly art = new FormControl('2D');
 
     ngOnInit() {
         console.log('CreateArtComponent.ngOnInit');

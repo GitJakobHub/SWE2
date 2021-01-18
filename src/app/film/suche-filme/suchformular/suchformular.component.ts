@@ -16,11 +16,12 @@
  */
 
 import { Component, Output, ViewChild } from '@angular/core';
+
 import { Subject } from 'rxjs';
 import { SucheArtComponent } from './suche-art.component';
+import { SucheRegisseurComponent } from './suche-regisseur.component';
 import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
 import { SucheTitelComponent } from './suche-titel.component';
-import { SucheVerlagComponent } from './suche-verlag.component';
 import type { Suchkriterien } from '../../shared';
 import { fadeIn } from '../../../shared';
 
@@ -48,8 +49,8 @@ export class SuchformularComponent {
     @ViewChild(SucheTitelComponent, { static: true })
     private readonly sucheTitelComponent!: SucheTitelComponent;
 
-    @ViewChild(SucheVerlagComponent, { static: true })
-    private readonly sucheVerlagComponent!: SucheVerlagComponent;
+    @ViewChild(SucheRegisseurComponent, { static: true })
+    private readonly sucheRegisseurComponent!: SucheRegisseurComponent;
 
     @ViewChild(SucheArtComponent, { static: true })
     private readonly sucheArtComponent!: SucheArtComponent;
@@ -70,17 +71,17 @@ export class SuchformularComponent {
      */
     onFind() {
         const { titel } = this.sucheTitelComponent;
-        const { verlag } = this.sucheVerlagComponent;
+        const { regisseur } = this.sucheRegisseurComponent;
         const { art } = this.sucheArtComponent;
         const { javascript } = this.sucheSchlagwoerterComponent;
         const { typescript } = this.sucheSchlagwoerterComponent;
         console.log(
-            `SuchformularComponent.onFind(): titel=${titel}, verlag=${verlag}, art=${art}, javascript=${javascript}, typescript=${typescript}`,
+            `SuchformularComponent.onFind(): titel=${titel}, regisseur=${regisseur}, art=${art}, javascript=${javascript}, typescript=${typescript}`,
         );
 
         this.suchkriterien$.next({
             titel,
-            verlag,
+            regisseur,
             art,
             schlagwoerter: { javascript, typescript },
         });

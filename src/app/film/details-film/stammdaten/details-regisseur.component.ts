@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,14 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, Input } from '@angular/core';
 
-import { UpdateVerlagComponent } from './update-verlag.component';
+import type { OnInit } from '@angular/core';
+import type { Regisseur } from '../../shared/film';
 
-@NgModule({
-    declarations: [UpdateVerlagComponent],
-    exports: [UpdateVerlagComponent],
-    imports: [ReactiveFormsModule],
+/**
+ * Komponente f&uuml;r das Tag <code>hs-details-regisseur</code>
+ */
+@Component({
+    selector: 'hs-details-regisseur',
+    templateUrl: './details-regisseur.component.html',
 })
-export class UpdateVerlagModule {}
+export class DetailsRegisseurComponent implements OnInit {
+    @Input()
+    regisseur: Regisseur | undefined | '';
+
+    ngOnInit() {
+        console.log(`DetailsRegisseurComponent.regisseur=${this.regisseur}`);
+    }
+}

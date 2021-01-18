@@ -142,7 +142,7 @@ export class SuchergebnisComponent implements OnChanges, OnInit {
     private reset() {
         this.suchkriterien = {
             titel: '',
-            verlag: '',
+            regisseur: '',
             art: '',
             schlagwoerter: { javascript: false, typescript: false },
         };
