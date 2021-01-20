@@ -61,7 +61,9 @@
               <td (click)="onClick(b)">{{ b.titel }}</td>
               <td>
                 <span [ngSwitch]="b.regisseur">
-                  <span *ngSwitchCase="'UNIVERSAL_STUDIOSLAG'">Universal Studios</span>
+                  <span *ngSwitchCase="'UNIVERSAL_STUDIOSLAG'"
+                    >Universal Studios</span
+                  >
                   <span *ngSwitchCase="'WARNER_BROS'">Warner Bros.</span>
                   <span *ngSwitchDefault>unbekannt</span>
                 </span>

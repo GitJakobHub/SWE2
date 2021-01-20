@@ -54,9 +54,7 @@ export class LiniendiagrammComponent implements OnInit {
         const filme$ = this.filmService.find() as Observable<Film[]>;
         filme$
             .pipe(
-                map(filme =>
-                    filme.filter(film => film.rating !== undefined),
-                ),
+                map(filme => filme.filter(film => film.rating !== undefined)),
                 first(),
             )
             // eslint-disable-next-line rxjs/no-ignored-error
