@@ -32,7 +32,7 @@ import type { Suchkriterien } from '../../shared';
 /**
  * Komponente f&uuml;r das Tag <code>hs-suchergebnis</code>, um zun&auml;chst
  * das Warten und danach das Ergebnis der Suche anzuzeigen, d.h. die gefundenen
- * B&uuml;cher oder eine Fehlermeldung.
+ * Filme oder eine Fehlermeldung.
  */
 @Component({
     selector: 'hs-suchergebnis',

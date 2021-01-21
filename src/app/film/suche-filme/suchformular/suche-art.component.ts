@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import type { FilmArt } from '../../shared/film';
 import { Component } from '@angular/core';
+import type { FilmArt } from '../../shared/film';
 import { fadeIn } from '../../../shared';
 
 /**
