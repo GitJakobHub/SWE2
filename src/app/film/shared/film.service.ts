@@ -64,6 +64,7 @@ export interface Suchkriterien {
 export class FilmService {
     private readonly baseUriFilme!: string;
 
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     private _film: Film | undefined;
 
     /**

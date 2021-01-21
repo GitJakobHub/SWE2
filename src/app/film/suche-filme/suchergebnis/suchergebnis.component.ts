@@ -119,7 +119,7 @@ export class SuchergebnisComponent implements OnChanges, OnInit {
 
         switch (statuscode) {
             case HttpStatus.NOT_FOUND:
-                this.errorMsg = 'Keine Bücher gefunden.';
+                this.errorMsg = 'Keine Filme gefunden.';
                 break;
             case HttpStatus.TOO_MANY_REQUESTS:
                 this.errorMsg =

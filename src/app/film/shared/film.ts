@@ -94,6 +94,7 @@ export interface FilmForm extends FilmShared {
  * Functions fuer Abfragen und Aenderungen.
  */
 export class Film {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     private static readonly SPACE = 2;
 
     ratingArray: boolean[] =
