@@ -15,9 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Film, FilmService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import type { DataItem, MultiSeries } from '@swimlane/ngx-charts';
+import { Film, FilmService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { first, map } from 'rxjs/operators';
+
 import { Component } from '@angular/core';
 import type { Observable } from 'rxjs';
 import type { OnInit } from '@angular/core';
@@ -54,9 +55,7 @@ export class LiniendiagrammComponent implements OnInit {
         const filme$ = this.filmService.find() as Observable<Film[]>;
         filme$
             .pipe(
-                map(filme =>
-                    filme.filter(film => film.rating !== undefined),
-                ),
+                map(filme => filme.filter(film => film.rating !== undefined)),
                 first(),
             )
             // eslint-disable-next-line rxjs/no-ignored-error

@@ -29,7 +29,7 @@
     >
       <div class="card-header">
         <i class="material-icons">folder_open</i>
-        <span class="ml-1 font-weight-bold">Gefundene B&uuml;cher</span>
+        <span class="ml-1 font-weight-bold">Gefundene Filme</span>
       </div>
       <div class="card-body">
         <table
@@ -61,7 +61,9 @@
               <td (click)="onClick(b)">{{ b.titel }}</td>
               <td>
                 <span [ngSwitch]="b.regisseur">
-                  <span *ngSwitchCase="'UNIVERSAL_STUDIOSLAG'">Universal Studios</span>
+                  <span *ngSwitchCase="'UNIVERSAL_STUDIOSLAG'"
+                    >Universal Studios</span
+                  >
                   <span *ngSwitchCase="'WARNER_BROS'">Warner Bros.</span>
                   <span *ngSwitchDefault>unbekannt</span>
                 </span>
@@ -99,7 +101,7 @@
             <ng-template ngPluralCase="=0"> Es gibt kein Film </ng-template>
             <ng-template ngPluralCase="=1"> Es gibt ein Film </ng-template>
             <ng-template ngPluralCase="other">
-              Es gibt {{ filme.length }} B&uuml;cher
+              Es gibt {{ filme.length }} Filme
             </ng-template>
           </span>
         </div>

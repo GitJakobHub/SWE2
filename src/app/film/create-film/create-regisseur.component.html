@@ -31,7 +31,10 @@
         <option value="WARNER_BROS">Warner Bros.</option>
       </select>
 
-      <div *ngIf="regisseur.invalid && regisseur.touched" class="invalid-feedback">
+      <div
+        *ngIf="regisseur.invalid && regisseur.touched"
+        class="invalid-feedback"
+      >
         <div *ngIf="regisseur.errors && regisseur.errors.required">
           <i class="material-icons">error</i>
           <span class="ml-1"> Ein Regisseur ist erforderlich. </span>

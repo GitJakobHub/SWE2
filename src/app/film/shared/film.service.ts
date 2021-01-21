@@ -56,7 +56,7 @@ export interface Suchkriterien {
 // Die Anwendungslogik wird vom Controller an Service-Klassen delegiert.
 
 /**
- * Die Service-Klasse zu B&uuml;cher wird zum "Root Application Injector"
+ * Die Service-Klasse zu Filme wird zum "Root Application Injector"
  * hinzugefuegt und ist in allen Klassen der Webanwendung verfuegbar.
  */
 /* eslint-disable no-underscore-dangle */
@@ -64,6 +64,7 @@ export interface Suchkriterien {
 export class FilmService {
     private readonly baseUriFilme!: string;
 
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     private _film: Film | undefined;
 
     /**
