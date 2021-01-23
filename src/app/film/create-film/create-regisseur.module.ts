@@ -17,12 +17,13 @@
 
 import { CommonModule } from '@angular/common';
 import { CreateRegisseurComponent } from './create-regisseur.component';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateRegisseurComponent],
     exports: [CreateRegisseurComponent],
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, MatSelectModule],
 })
 export class CreateRegisseurModule {}
