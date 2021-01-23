@@ -119,7 +119,10 @@ export class FilmService {
 
                     // entweder Observable<FilmServer[]> oder Observable<FindError>
                     map(result =>
-                        this.findResultToFilmArray(result._embedded?.kundeList),
+                        this.findResultToFilmArray(
+                            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+                            result._embedded?.kundeList ?? new FindError(404),
+                        ),
                     ),
                 )
         );
