@@ -16,12 +16,13 @@
  */
 
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { SucheFilmstudioComponent } from './suche-filmstudio.component';
 
 @NgModule({
     declarations: [SucheFilmstudioComponent],
     exports: [SucheFilmstudioComponent],
-    imports: [FormsModule],
+    imports: [FormsModule, MatSelectModule],
 })
 export class SucheFilmstudioModule {}

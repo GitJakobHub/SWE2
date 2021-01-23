@@ -24,11 +24,11 @@
   role="form"
   *ngIf="! initialLoggedIn || (notLoggedIn$ | async); else loggedIn"
 >
-  <div class="col-12">
-    <label for="usernameInput" class="col-form-label">
+  <mat-form-field class="col-12">
+    <mat-label for="usernameInput" class="col-form-label">
       <small>Benutzername</small>
-    </label>
-    <input
+    </mat-label>
+    <input matInput
       id="usernameInput"
       type="search"
       class="form-control form-control-sm"
@@ -38,13 +38,13 @@
       [(ngModel)]="username"
       name="username"
     />
-  </div>
+  </mat-form-field>
 
-  <div class="col-12">
-    <label for="passwordInput" class="col-form-label">
+  <mat-form-field class="col-12">
+    <mat-label for="passwordInput" class="col-form-label">
       <small>Passwort</small>
-    </label>
-    <input
+    </mat-label>
+    <input matInput
       id="passwordInput"
       type="password"
       class="form-control form-control-sm"
@@ -54,16 +54,16 @@
       [(ngModel)]="password"
       name="password"
     />
-  </div>
+  </mat-form-field>
   <div class="col-12">
-    <button type="submit" class="btn btn-primary btn-sm" tabindex="3">
+    <button mat-raised-button color="primary" type="submit" class="btn btn-primary">
       Login
     </button>
   </div>
 </form>
 
 <ng-template #loggedIn>
-  <button type="submit" class="btn btn-primary" (click)="onLogout()">
+  <button mat-stroked-button type="submit" color="primary" (click)="onLogout()">
     <span class="mr-1">Logout</span>
     <i class="material-icons md-48">chevron_right</i>
   </button>

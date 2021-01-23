@@ -26,6 +26,13 @@ import { Title } from '@angular/platform-browser'; // eslint-disable-line @types
     // https://github.com/angular/angular/tree/master/packages/common/locales
     // http://cldr.unicode.org
     templateUrl: './home.component.html',
+    styles: [
+        `
+            .example-button-row .mat-button-base {
+                margin: 8px;
+            }
+        `,
+    ],
 })
 export class HomeComponent implements OnInit {
     constructor(private readonly title: Title) {
