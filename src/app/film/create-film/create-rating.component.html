@@ -16,19 +16,25 @@
 -->
 
 <div class="row">
-  <label class="col col-2 col-form-label gy-3">Bewertung</label>
+  <label class="col col-2 col-form-label gy-3">Genre</label>
   <div class="col col-10 gy-3" [formGroup]="form">
     <select class="form-select" formControlName="rating">
-      <option value="">Bewertung ausw&auml;hlen</option>
-      <optgroup label="Hoch"><option value="5">5</option></optgroup>
-      <optgroup label="Mittel">
+      <!--<option value="">Genre ausw&auml;hlen</option>-->
+      <optgroup label="Genres">
+        <option value="Abenteuer">Abenteuer</option>
+        <option value="Action">Action</option>
+        <option value="Horror">Horror</option>
+        <option value="Krimi">Krimi</option>
+        <option value="Thriller">Thriller</option>
+      </optgroup>
+      <!--<optgroup label="Mittel">
         <option value="4">4</option>
         <option value="3">3</option>
       </optgroup>
       <optgroup label="Niedrig">
         <option value="2">2</option>
         <option value="1">1</option>
-      </optgroup>
+      </optgroup>-->
     </select>
   </div>
 </div>
