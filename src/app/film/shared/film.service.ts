@@ -18,7 +18,7 @@
  */
 
 import { BASE_URI, FILME_PATH_REST } from '../../shared';
-import type { FilmArt, FilmServer, Regisseur } from './film';
+import type { FilmArt, FilmServer, Filmstudio } from './film';
 import { FindError, RemoveError, SaveError, UpdateError } from './errors';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
@@ -37,7 +37,7 @@ import { of } from 'rxjs';
 
 export interface Suchkriterien {
     titel: string;
-    regisseur: Regisseur | '';
+    filmstudio: Filmstudio | '';
     art: FilmArt | '';
     schlagwoerter: { javascript: boolean; typescript: boolean };
 }
@@ -371,7 +371,7 @@ export class FilmService {
             return httpParams;
         }
 
-        const { titel, regisseur, art, schlagwoerter } = suchkriterien;
+        const { titel, filmstudio, art, schlagwoerter } = suchkriterien;
         const { javascript, typescript } = schlagwoerter;
 
         if (titel !== '') {
@@ -380,8 +380,8 @@ export class FilmService {
         if (art !== '') {
             httpParams = httpParams.set('art', art);
         }
-        if (regisseur !== '') {
-            httpParams = httpParams.set('regisseur', regisseur);
+        if (filmstudio !== '') {
+            httpParams = httpParams.set('filmstudio', filmstudio);
         }
         if (javascript) {
             httpParams = httpParams.set('javascript', 'true');

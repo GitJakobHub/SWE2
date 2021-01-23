@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { SucheArtModule } from './suche-art.module';
-import { SucheRegisseurModule } from './suche-regisseur.module';
+import { SucheFilmstudioModule } from './suche-filmstudio.module';
 import { SucheSchlagwoerterModule } from './suche-schlagwoerter.module';
 import { SucheTitelModule } from './suche-titel.module';
 import { SuchformularComponent } from './suchformular.component';
@@ -37,7 +37,7 @@ import { SuchformularComponent } from './suchformular.component';
         SucheArtModule,
         SucheSchlagwoerterModule,
         SucheTitelModule,
-        SucheRegisseurModule,
+        SucheFilmstudioModule,
     ],
 })
 export class SuchformularModule {}

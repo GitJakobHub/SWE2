@@ -18,9 +18,9 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateArtModule } from './update-art.module';
+import { UpdateFilmstudioModule } from './update-filmstudio.module';
 import { UpdateIsbnModule } from './update-isbn.module';
 import { UpdateRatingModule } from './update-rating.module';
-import { UpdateRegisseurModule } from './update-regisseur.module';
 import { UpdateStammdatenComponent } from './update-stammdaten.component';
 import { UpdateTitelModule } from './update-titel.module';
 
@@ -33,7 +33,7 @@ import { UpdateTitelModule } from './update-titel.module';
         UpdateIsbnModule,
         UpdateRatingModule,
         UpdateTitelModule,
-        UpdateRegisseurModule,
+        UpdateFilmstudioModule,
     ],
 })
 export class UpdateStammdatenModule {}

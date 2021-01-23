@@ -75,7 +75,7 @@ export class UpdateStammdatenComponent implements OnInit {
         this.film.updateStammdaten(
             this.form.value.titel,
             this.form.value.art,
-            this.form.value.regisseur,
+            this.form.value.filmstudio,
             this.form.value.rating,
             this.film.datum,
             this.film.preis,

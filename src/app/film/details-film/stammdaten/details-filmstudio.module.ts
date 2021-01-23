@@ -16,12 +16,12 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { DetailsRegisseurComponent } from './details-regisseur.component';
+import { DetailsFilmstudioComponent } from './details-filmstudio.component';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-    declarations: [DetailsRegisseurComponent],
-    exports: [DetailsRegisseurComponent],
+    declarations: [DetailsFilmstudioComponent],
+    exports: [DetailsFilmstudioComponent],
     imports: [CommonModule],
 })
-export class DetailsRegisseurModule {}
+export class DetailsFilmstudioModule {}
