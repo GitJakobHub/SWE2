@@ -20,24 +20,22 @@
     Schlagw&ouml;rter
   </label>
   <div class="col col-10 gy-3" [formGroup]="form">
-    <div class="form-checkbox">
-      <input
-        type="checkbox"
-        class="form-check-input"
+
+    <div class="example-list-section">
+      <mat-checkbox
+        class="example-margin"
         id="javascriptInput"
         formControlName="javascript"
-      />
-      <label for="javascriptInput" class="ml-1">JavaScript</label>
+        for="javascriptInput" 
+      >JavaScript</mat-checkbox>
     </div>
-
-    <div class="form-checkbox">
-      <input
-        type="checkbox"
-        class="form-check-input"
+    <div class="example-list-section">
+      <mat-checkbox
+        class="example-margin"
         id="typescriptInput"
         formControlName="typescript"
-      />
-      <label for="typescriptInput" class="ml-1">TypeScript</label>
+        for="typescriptInput" 
+      >TypeScript</mat-checkbox>
     </div>
   </div>
 </div>

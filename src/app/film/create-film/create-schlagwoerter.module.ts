@@ -16,12 +16,13 @@
  */
 
 import { CreateSchlagwoerterComponent } from './create-schlagwoerter.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateSchlagwoerterComponent],
     exports: [CreateSchlagwoerterComponent],
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, MatCheckboxModule],
 })
 export class CreateSchlagwoerterModule {}

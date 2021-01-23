@@ -16,12 +16,13 @@
  */
 
 import { CreateLieferbarComponent } from './create-lieferbar.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateLieferbarComponent],
     exports: [CreateLieferbarComponent],
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, MatCheckboxModule],
 })
 export class CreateLieferbarModule {}
