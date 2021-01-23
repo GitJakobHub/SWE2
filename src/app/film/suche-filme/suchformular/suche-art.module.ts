@@ -16,12 +16,13 @@
  */
 
 import { FormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
 import { NgModule } from '@angular/core';
 import { SucheArtComponent } from './suche-art.component';
 
 @NgModule({
     declarations: [SucheArtComponent],
     exports: [SucheArtComponent],
-    imports: [FormsModule],
+    imports: [FormsModule, MatRadioModule],
 })
 export class SucheArtModule {}

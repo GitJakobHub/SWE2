@@ -16,12 +16,13 @@
  */
 
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { SucheTitelComponent } from './suche-titel.component';
 
 @NgModule({
     declarations: [SucheTitelComponent],
     exports: [SucheTitelComponent],
-    imports: [FormsModule],
+    imports: [FormsModule, MatInputModule],
 })
 export class SucheTitelModule {}

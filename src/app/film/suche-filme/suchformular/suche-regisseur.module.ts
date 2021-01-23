@@ -16,12 +16,13 @@
  */
 
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { SucheRegisseurComponent } from './suche-regisseur.component';
 
 @NgModule({
     declarations: [SucheRegisseurComponent],
     exports: [SucheRegisseurComponent],
-    imports: [FormsModule],
+    imports: [FormsModule, MatSelectModule],
 })
 export class SucheRegisseurModule {}

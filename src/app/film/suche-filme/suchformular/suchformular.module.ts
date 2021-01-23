@@ -17,6 +17,10 @@
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { SucheArtModule } from './suche-art.module';
 import { SucheRegisseurModule } from './suche-regisseur.module';
@@ -38,6 +42,10 @@ import { SuchformularComponent } from './suchformular.component';
         SucheSchlagwoerterModule,
         SucheTitelModule,
         SucheRegisseurModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        MatCardModule,
     ],
 })
 export class SuchformularModule {}

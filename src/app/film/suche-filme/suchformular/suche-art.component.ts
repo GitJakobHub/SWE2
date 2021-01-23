@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import type { FilmArt } from '../../shared/film';
 import { Component } from '@angular/core';
+import type { FilmArt } from '../../shared/film';
 import { fadeIn } from '../../../shared';
 
 /**
@@ -26,6 +26,19 @@ import { fadeIn } from '../../../shared';
     selector: 'hs-suche-art',
     templateUrl: './suche-art.component.html',
     animations: [fadeIn],
+    // eslint-disable-next-line @angular-eslint/component-max-inline-declarations
+    styles: [
+        `
+            .example-radio-group {
+                display: flex;
+                flex-direction: column;
+                margin: 15px 0;
+            }
+            .example-radio-button {
+                margin: 5px;
+            }
+        `,
+    ],
 })
 export class SucheArtComponent {
     art: FilmArt | '' = '';
