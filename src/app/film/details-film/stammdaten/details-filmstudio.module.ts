@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -11,24 +11,17 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy oSf the GNU General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component } from '@angular/core';
-import type { Regisseur } from '../../shared/film';
+import { CommonModule } from '@angular/common';
+import { DetailsFilmstudioComponent } from './details-filmstudio.component';
+import { NgModule } from '@angular/core';
 
-/**
- * Komponente f&uuml;r das Tag <code>hs-suche-regisseur</code>
- */
-@Component({
-    selector: 'hs-suche-regisseur',
-    templateUrl: './suche-regisseur.component.html',
+@NgModule({
+    declarations: [DetailsFilmstudioComponent],
+    exports: [DetailsFilmstudioComponent],
+    imports: [CommonModule],
 })
-export class SucheRegisseurComponent {
-    regisseur: Regisseur | '' = '';
-
-    constructor() {
-        console.log('SucheRegisseurComponent.constructor()');
-    }
-}
+export class DetailsFilmstudioModule {}

@@ -15,13 +15,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div class="row">
-  <label class="col col-2 col-form-label gy-3">Regisseur</label>
-
-  <div class="col col-10 gy-3" [formGroup]="form">
-    <select class="form-select" formControlName="regisseur">
-      <option value="UNIVERSAL_STUDIOSLAG">Universal Studios</option>
-      <option value="WARNER_BROS">Warner Bros.</option>
-    </select>
+<div class="row mt-2">
+  <label class="col col-1"> Filmstudio </label>
+  <div class="col col-11">
+    <span [ngSwitch]="filmstudio">
+      <span *ngSwitchCase="'UNIVERSAL_STUDIOSLAG'">Universal Studios</span>
+      <span *ngSwitchCase="'WARNER_BROS'">Warner Bros.</span>
+      <span *ngSwitchDefault>unbekannt</span>
+    </span>
   </div>
 </div>

@@ -16,36 +16,28 @@
  */
 
 import { Component, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
-import { FormControl } from '@angular/forms';
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
-import type { Regisseur } from '../../shared/film';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-regisseur</code>
+ * Komponente mit dem Tag &lt;hs-create-filmstudio&gt;, um das Erfassungsformular
+ * f&uuml;r einen neuen Film zu realisieren.
  */
 @Component({
-    selector: 'hs-update-regisseur',
-    templateUrl: './update-regisseur.component.html',
+    selector: 'hs-create-filmstudio',
+    templateUrl: './create-filmstudio.component.html',
 })
-export class UpdateRegisseurComponent implements OnInit {
-    // <hs-update-regisseur [form]="form" [currentValue]="...">
+export class CreateFilmstudioComponent implements OnInit {
     @Input()
     form!: FormGroup;
 
-    @Input()
-    currentValue: Regisseur | undefined | '';
-
-    regisseur!: FormControl;
+    readonly filmstudio = new FormControl(undefined, Validators.required);
 
     ngOnInit() {
-        console.log(
-            'UpdateRegisseurComponent.ngOnInit(): currentValue=',
-            this.currentValue,
-        );
+        console.log('CreateFilmstudioComponent.ngOnInit');
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.regisseur = new FormControl(this.currentValue);
-        this.form.addControl('regisseur', this.regisseur);
+        this.form.addControl('filmstudio', this.filmstudio);
     }
 }

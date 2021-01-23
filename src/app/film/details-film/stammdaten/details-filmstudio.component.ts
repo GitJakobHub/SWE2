@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,14 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CommonModule } from '@angular/common';
-import { CreateRegisseurComponent } from './create-regisseur.component';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, Input } from '@angular/core';
 
-@NgModule({
-    declarations: [CreateRegisseurComponent],
-    exports: [CreateRegisseurComponent],
-    imports: [CommonModule, ReactiveFormsModule],
+import type { Filmstudio } from '../../shared/film';
+import type { OnInit } from '@angular/core';
+
+/**
+ * Komponente f&uuml;r das Tag <code>hs-details-filmstudio</code>
+ */
+@Component({
+    selector: 'hs-details-filmstudio',
+    templateUrl: './details-filmstudio.component.html',
 })
-export class CreateRegisseurModule {}
+export class DetailsFilmstudioComponent implements OnInit {
+    @Input()
+    filmstudio: Filmstudio | undefined | '';
+
+    ngOnInit() {
+        console.log(`DetailsFilmstudioComponent.filmstudio=${this.filmstudio}`);
+    }
+}

@@ -11,27 +11,24 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * You should have received a copy oSf the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component, Input } from '@angular/core';
-
-import type { OnInit } from '@angular/core';
-import type { Regisseur } from '../../shared/film';
+import { Component } from '@angular/core';
+import type { Filmstudio } from '../../shared/film';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-regisseur</code>
+ * Komponente f&uuml;r das Tag <code>hs-suche-filmstudio</code>
  */
 @Component({
-    selector: 'hs-details-regisseur',
-    templateUrl: './details-regisseur.component.html',
+    selector: 'hs-suche-filmstudio',
+    templateUrl: './suche-filmstudio.component.html',
 })
-export class DetailsRegisseurComponent implements OnInit {
-    @Input()
-    regisseur: Regisseur | undefined | '';
+export class SucheFilmstudioComponent {
+    filmstudio: Filmstudio | '' = '';
 
-    ngOnInit() {
-        console.log(`DetailsRegisseurComponent.regisseur=${this.regisseur}`);
+    constructor() {
+        console.log('SucheFilmstudioComponent.constructor()');
     }
 }

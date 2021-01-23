@@ -19,7 +19,7 @@ import { Component, Output, ViewChild } from '@angular/core';
 
 import { Subject } from 'rxjs';
 import { SucheArtComponent } from './suche-art.component';
-import { SucheRegisseurComponent } from './suche-regisseur.component';
+import { SucheFilmstudioComponent } from './suche-filmstudio.component';
 import { SucheSchlagwoerterComponent } from './suche-schlagwoerter.component';
 import { SucheTitelComponent } from './suche-titel.component';
 import type { Suchkriterien } from '../../shared';
@@ -49,8 +49,8 @@ export class SuchformularComponent {
     @ViewChild(SucheTitelComponent, { static: true })
     private readonly sucheTitelComponent!: SucheTitelComponent;
 
-    @ViewChild(SucheRegisseurComponent, { static: true })
-    private readonly sucheRegisseurComponent!: SucheRegisseurComponent;
+    @ViewChild(SucheFilmstudioComponent, { static: true })
+    private readonly sucheFilmstudioComponent!: SucheFilmstudioComponent;
 
     @ViewChild(SucheArtComponent, { static: true })
     private readonly sucheArtComponent!: SucheArtComponent;
@@ -65,23 +65,23 @@ export class SuchformularComponent {
     }
 
     /**
-     * Suche nach B&uuml;chern, die den spezfizierten Suchkriterien entsprechen
+     * Suche nach Filmen, die den spezfizierten Suchkriterien entsprechen
      * @return false, um das durch den Button-Klick ausgel&ouml;ste Ereignis
      *         zu konsumieren.
      */
     onFind() {
         const { titel } = this.sucheTitelComponent;
-        const { regisseur } = this.sucheRegisseurComponent;
+        const { filmstudio } = this.sucheFilmstudioComponent;
         const { art } = this.sucheArtComponent;
         const { javascript } = this.sucheSchlagwoerterComponent;
         const { typescript } = this.sucheSchlagwoerterComponent;
         console.log(
-            `SuchformularComponent.onFind(): titel=${titel}, regisseur=${regisseur}, art=${art}, javascript=${javascript}, typescript=${typescript}`,
+            `SuchformularComponent.onFind(): titel=${titel}, filmstudio=${filmstudio}, art=${art}, javascript=${javascript}, typescript=${typescript}`,
         );
 
         this.suchkriterien$.next({
             titel,
-            regisseur,
+            filmstudio,
             art,
             schlagwoerter: { javascript, typescript },
         });
