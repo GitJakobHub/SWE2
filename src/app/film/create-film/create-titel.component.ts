@@ -31,6 +31,7 @@ import type { OnInit } from '@angular/core';
     templateUrl: './create-titel.component.html',
 })
 export class CreateTitelComponent implements OnInit {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     private static readonly MIN_LENGTH = 2;
 
     @Input()

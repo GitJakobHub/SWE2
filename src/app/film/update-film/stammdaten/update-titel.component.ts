@@ -17,6 +17,7 @@
 
 import { Component, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 
@@ -28,6 +29,7 @@ import type { OnInit } from '@angular/core';
     templateUrl: './update-titel.component.html',
 })
 export class UpdateTitelComponent implements OnInit {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     private static readonly MIN_LENGTH = 2;
 
     // <hs-update-titel [form]="form" [currentValue]="...">
