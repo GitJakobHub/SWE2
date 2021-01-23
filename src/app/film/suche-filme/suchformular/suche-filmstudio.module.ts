@@ -17,11 +17,11 @@
 
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { SucheRegisseurComponent } from './suche-regisseur.component';
+import { SucheFilmstudioComponent } from './suche-filmstudio.component';
 
 @NgModule({
-    declarations: [SucheRegisseurComponent],
-    exports: [SucheRegisseurComponent],
+    declarations: [SucheFilmstudioComponent],
+    exports: [SucheFilmstudioComponent],
     imports: [FormsModule],
 })
-export class SucheRegisseurModule {}
+export class SucheFilmstudioModule {}

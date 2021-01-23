@@ -19,12 +19,12 @@ import { CommonModule } from '@angular/common';
 import { CreateArtModule } from './create-art.module';
 import { CreateDatumModule } from './create-datum.module';
 import { CreateFilmComponent } from './create-film.component';
+import { CreateFilmstudioModule } from './create-filmstudio.module';
 import { CreateIsbnModule } from './create-isbn.module';
 import { CreateLieferbarModule } from './create-lieferbar.module';
 import { CreatePreisModule } from './create-preis.module';
 import { CreateRabattModule } from './create-rabatt.module';
 import { CreateRatingModule } from './create-rating.module';
-import { CreateRegisseurModule } from './create-regisseur.module';
 import { CreateSchlagwoerterModule } from './create-schlagwoerter.module';
 import { CreateTitelModule } from './create-titel.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
@@ -53,7 +53,7 @@ import { Title } from '@angular/platform-browser';
         CreateRatingModule,
         CreateSchlagwoerterModule,
         CreateTitelModule,
-        CreateRegisseurModule,
+        CreateFilmstudioModule,
         ErrorMessageModule,
     ],
     providers: [Title],

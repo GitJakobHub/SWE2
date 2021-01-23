@@ -41,7 +41,7 @@
               <th>Nr.</th>
               <th>ID</th>
               <th>Titel</th>
-              <th>Regisseur</th>
+              <th>Filmstudio</th>
               <th>Schlagw&ouml;rter</th>
               <th>
                 <span class="visually-hidden">Spalte f&uuml;r Details</span>
@@ -60,7 +60,7 @@
               <td (click)="onClick(b)">{{ b._id }}</td>
               <td (click)="onClick(b)">{{ b.titel }}</td>
               <td>
-                <span [ngSwitch]="b.regisseur">
+                <span [ngSwitch]="b.filmstudio">
                   <span *ngSwitchCase="'UNIVERSAL_STUDIOSLAG'"
                     >Universal Studios</span
                   >
