@@ -17,12 +17,13 @@
 
 import { CommonModule } from '@angular/common';
 import { CreateTitelComponent } from './create-titel.component';
+import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateTitelComponent],
     exports: [CreateTitelComponent],
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, MatInputModule],
 })
 export class CreateTitelModule {}
