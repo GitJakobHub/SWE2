@@ -16,7 +16,6 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -25,6 +24,6 @@ import { UpdateIsbnComponent } from './update-isbn.component';
 @NgModule({
     declarations: [UpdateIsbnComponent],
     exports: [UpdateIsbnComponent],
-    imports: [CommonModule, ReactiveFormsModule, MatInputModule],
+    imports: [CommonModule, ReactiveFormsModule],
 })
 export class UpdateIsbnModule {}

@@ -15,9 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -26,11 +23,6 @@ import { UpdateSchlagwoerterComponent } from './update-schlagwoerter.component';
 @NgModule({
     declarations: [UpdateSchlagwoerterComponent],
     exports: [UpdateSchlagwoerterComponent],
-    imports: [
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatIconModule,
-        MatCheckboxModule,
-    ],
+    imports: [ReactiveFormsModule],
 })
 export class UpdateSchlagwoerterModule {}

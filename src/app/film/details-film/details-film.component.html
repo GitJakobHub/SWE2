@@ -14,8 +14,8 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<mat-card>
-  <hs-waiting *ngIf="waiting; else details"></hs-waiting>
+
+<hs-waiting *ngIf="waiting; else details"></hs-waiting>
 
 <ng-template #details>
   <hs-details-breadcrumbs></hs-details-breadcrumbs>
@@ -88,4 +88,3 @@
     <hs-error-message [text]="errorMsg"></hs-error-message>
   </ng-template>
 </ng-template>
-</mat-card>

@@ -19,11 +19,11 @@
   <label for="titelInput" class="col col-2 col-form-label gy-3">Titel *</label>
 
   <div class="col col-10 gy-3" [formGroup]="form">
-    <mat-form-field style="width: 100%;" class="input-group">
-      <mat-label>Titel</mat-label>
-      <input matInput
+    <div class="input-group">
+      <input
         id="titelInput"
         placeholder="Titel"
+        class="form-control"
         autofocus
         formControlName="titel"
         [class.is-invalid]="titel.invalid && titel.dirty"
@@ -46,6 +46,6 @@
           </span>
         </div>
       </div>
-    </mat-form-field>
+    </div>
   </div>
 </div>

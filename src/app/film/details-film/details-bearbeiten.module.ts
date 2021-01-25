@@ -17,14 +17,12 @@
 
 import { CommonModule } from '@angular/common';
 import { DetailsBearbeitenComponent } from './details-bearbeiten.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [DetailsBearbeitenComponent],
     exports: [DetailsBearbeitenComponent],
-    imports: [CommonModule, RouterModule, MatButtonModule, MatIconModule],
+    imports: [CommonModule, RouterModule],
 })
 export class DetailsBearbeitenModule {}

@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateFilmstudioComponent } from './update-filmstudio.component';
@@ -23,6 +22,6 @@ import { UpdateFilmstudioComponent } from './update-filmstudio.component';
 @NgModule({
     declarations: [UpdateFilmstudioComponent],
     exports: [UpdateFilmstudioComponent],
-    imports: [ReactiveFormsModule, MatSelectModule],
+    imports: [ReactiveFormsModule],
 })
 export class UpdateFilmstudioModule {}
