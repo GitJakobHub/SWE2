@@ -20,11 +20,10 @@
     Titel *
   </label>
   <div class="col col-10 gy-3" [formGroup]="form">
-    <div class="input-group">
-      <input
+    <mat-form-field style="width: 100%;" class="input-group">
+      <input matInput
         id="titelInput"
         placeholder="Titel"
-        class="form-control"
         autofocus
         formControlName="titel"
         [class.is-invalid]="titel.invalid && titel.touched"
@@ -43,6 +42,6 @@
           Ein Filmtitel muss mit einem Filmstaben oder einer Ziffer beginnen.
         </span>
       </div>
-    </div>
+    </mat-form-field>
   </div>
 </div>
