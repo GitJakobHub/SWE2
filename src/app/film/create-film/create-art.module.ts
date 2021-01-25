@@ -16,12 +16,13 @@
  */
 
 import { CreateArtComponent } from './create-art.component';
+import { MatRadioModule } from '@angular/material/radio';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateArtComponent],
     exports: [CreateArtComponent],
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, MatRadioModule],
 })
 export class CreateArtModule {}

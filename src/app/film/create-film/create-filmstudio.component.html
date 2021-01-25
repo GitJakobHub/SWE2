@@ -19,17 +19,21 @@
   <label class="col col-2 col-form-label gy-3">Filmstudio *</label>
   <div class="col col-10 gy-3" [formGroup]="form">
     <div class="input-group">
-      <select
-        class="form-select"
-        formControlName="filmstudio"
+      <mat-form-field
+        appearance = "fill"
         required
         [class.is-invalid]="filmstudio.invalid && filmstudio.touched"
         [class.is-valid]="filmstudio.valid && filmstudio.touched"
       >
-        <option value="">Einen Filmstudio ausw&auml;hlen</option>
-        <option value="UNIVERSAL_STUDIOSLAG">Universal Studios</option>
-        <option value="WARNER_BROS">Warner Bros.</option>
-      </select>
+        <mat-label>Auswählen</mat-label>
+        <mat-select>
+          <mat-option> </mat-option>
+          <mat-option value="UNIVERSAL_STUDIOSLAG"
+            >Universal Studios</mat-option
+          >
+          <mat-option value="WARNER_BROS">Warner Bros.</mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <div
         *ngIf="filmstudio.invalid && filmstudio.touched"

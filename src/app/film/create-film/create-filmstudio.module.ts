@@ -17,12 +17,13 @@
 
 import { CommonModule } from '@angular/common';
 import { CreateFilmstudioComponent } from './create-filmstudio.component';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateFilmstudioComponent],
     exports: [CreateFilmstudioComponent],
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, MatSelectModule],
 })
 export class CreateFilmstudioModule {}

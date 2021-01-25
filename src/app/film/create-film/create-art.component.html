@@ -18,28 +18,35 @@
 <div class="row">
   <label class="col col-2 col-form-label gy-3">Art *</label>
   <div class="col col-10 gy-3" [formGroup]="form">
-    <div class="form-check">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="2dInput"
-        formControlName="art"
-        name="art"
-        value="2D"
-      />
-      <label class="radio-inline ml-1" for="2dInput"> 2D </label>
-    </div>
-
-    <div class="form-check">
-      <input
-        type="radio"
-        class="form-check-input"
-        id="3dInput"
-        formControlName="art"
-        name="art"
-        value="3D"
-      />
-      <label class="radio-inline ml-1" for="3dInput"> 3D </label>
-    </div>
+    <mat-radio-group
+      class="example-radio-group"
+      formControlName="art"
+      name="art"
+      class="radio-inline ml-1"
+    >
+      <div>
+        <mat-radio-button
+          color="primary"
+          id="2dInput"
+          for="2dInput"
+          class="example-radio-button"
+          value="2D"
+        >
+          2D
+        </mat-radio-button>
+      </div>
+      <p></p>
+      <div>
+        <mat-radio-button
+          color="primary"
+          id="3dInput"
+          for="3dInput"
+          class="example-radio-button"
+          value="3D"
+        >
+          3D
+        </mat-radio-button>
+      </div>
+    </mat-radio-group>
   </div>
 </div>
