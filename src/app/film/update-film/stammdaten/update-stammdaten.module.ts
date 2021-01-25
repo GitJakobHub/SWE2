@@ -15,6 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateArtModule } from './update-art.module';
@@ -34,6 +36,8 @@ import { UpdateTitelModule } from './update-titel.module';
         UpdateRatingModule,
         UpdateTitelModule,
         UpdateFilmstudioModule,
+        MatButtonModule,
+        MatIconModule,
     ],
 })
 export class UpdateStammdatenModule {}
