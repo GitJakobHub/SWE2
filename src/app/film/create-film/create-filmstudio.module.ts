@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<<<<<<< HEAD:src/app/film/create-film/create-regisseur.module.ts
 /*
  * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -16,17 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CreateLieferbarComponent } from './create-lieferbar.component';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CommonModule } from '@angular/common';
+import { CreateRegisseurComponent } from './create-regisseur.component';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [CreateLieferbarComponent],
-    exports: [CreateLieferbarComponent],
-    imports: [ReactiveFormsModule, MatCheckboxModule],
+    declarations: [CreateRegisseurComponent],
+    exports: [CreateRegisseurComponent],
+    imports: [CommonModule, ReactiveFormsModule, MatSelectModule],
 })
-export class CreateLieferbarModule {}
+export class CreateRegisseurModule {}
 =======
 /*
  * Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
@@ -45,14 +46,15 @@ export class CreateLieferbarModule {}
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { CreateLieferbarComponent } from './create-lieferbar.component';
+import { CommonModule } from '@angular/common';
+import { CreateFilmstudioComponent } from './create-filmstudio.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [CreateLieferbarComponent],
-    exports: [CreateLieferbarComponent],
-    imports: [ReactiveFormsModule],
+    declarations: [CreateFilmstudioComponent],
+    exports: [CreateFilmstudioComponent],
+    imports: [CommonModule, ReactiveFormsModule],
 })
-export class CreateLieferbarModule {}
->>>>>>> master
+export class CreateFilmstudioModule {}
+>>>>>>> master:src/app/film/create-film/create-filmstudio.module.ts

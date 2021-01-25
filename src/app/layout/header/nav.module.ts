@@ -18,6 +18,8 @@
 // Direktiven (z.B. ngFor, ngIf) und Pipes
 import { CommonModule } from '@angular/common';
 import { LoginLogoutModule } from './login-logout.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { NavComponent } from './nav.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -25,6 +27,12 @@ import { RouterModule } from '@angular/router';
 @NgModule({
     declarations: [NavComponent],
     exports: [NavComponent],
-    imports: [CommonModule, RouterModule, LoginLogoutModule],
+    imports: [
+        CommonModule,
+        RouterModule,
+        LoginLogoutModule,
+        MatButtonModule,
+        MatIconModule,
+    ],
 })
 export class NavModule {}

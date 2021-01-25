@@ -32,7 +32,7 @@ import type { Suchkriterien } from '../../shared';
 /**
  * Komponente f&uuml;r das Tag <code>hs-suchergebnis</code>, um zun&auml;chst
  * das Warten und danach das Ergebnis der Suche anzuzeigen, d.h. die gefundenen
- * B&uuml;cher oder eine Fehlermeldung.
+ * Filme oder eine Fehlermeldung.
  */
 @Component({
     selector: 'hs-suchergebnis',
@@ -119,7 +119,7 @@ export class SuchergebnisComponent implements OnChanges, OnInit {
 
         switch (statuscode) {
             case HttpStatus.NOT_FOUND:
-                this.errorMsg = 'Keine Bücher gefunden.';
+                this.errorMsg = 'Keine Filme gefunden.';
                 break;
             case HttpStatus.TOO_MANY_REQUESTS:
                 this.errorMsg =
@@ -142,7 +142,7 @@ export class SuchergebnisComponent implements OnChanges, OnInit {
     private reset() {
         this.suchkriterien = {
             titel: '',
-            regisseur: '',
+            filmstudio: '',
             art: '',
             schlagwoerter: { javascript: false, typescript: false },
         };

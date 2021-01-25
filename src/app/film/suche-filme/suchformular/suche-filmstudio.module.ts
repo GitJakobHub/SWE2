@@ -15,25 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateArtModule } from './update-art.module';
-import { UpdateFilmstudioModule } from './update-filmstudio.module';
-import { UpdateIsbnModule } from './update-isbn.module';
-import { UpdateRatingModule } from './update-rating.module';
-import { UpdateStammdatenComponent } from './update-stammdaten.component';
-import { UpdateTitelModule } from './update-titel.module';
+import { SucheFilmstudioComponent } from './suche-filmstudio.component';
 
 @NgModule({
-    declarations: [UpdateStammdatenComponent],
-    exports: [UpdateStammdatenComponent],
-    imports: [
-        ReactiveFormsModule,
-        UpdateArtModule,
-        UpdateIsbnModule,
-        UpdateRatingModule,
-        UpdateTitelModule,
-        UpdateFilmstudioModule,
-    ],
+    declarations: [SucheFilmstudioComponent],
+    exports: [SucheFilmstudioComponent],
+    imports: [FormsModule, MatSelectModule],
 })
-export class UpdateStammdatenModule {}
+export class SucheFilmstudioModule {}

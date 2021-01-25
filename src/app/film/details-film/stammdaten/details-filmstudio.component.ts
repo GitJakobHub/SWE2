@@ -15,31 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { Component } from '@angular/core';
-import type { OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Component, Input } from '@angular/core';
 
+import type { Filmstudio } from '../../shared/film';
+import type { OnInit } from '@angular/core';
+
+/**
+ * Komponente f&uuml;r das Tag <code>hs-details-filmstudio</code>
+ */
 @Component({
-    selector: 'hs-home',
-    // https://next.angular.io/guide/i18n
-    // https://angular.io/guide/i18n
-    // https://github.com/angular/angular/tree/master/packages/common/locales
-    // http://cldr.unicode.org
-    templateUrl: './home.component.html',
-    styles: [
-        `
-            .example-button-row .mat-button-base {
-                margin: 8px;
-            }
-        `,
-    ],
+    selector: 'hs-details-filmstudio',
+    templateUrl: './details-filmstudio.component.html',
 })
-export class HomeComponent implements OnInit {
-    constructor(private readonly title: Title) {
-        console.log('HomeComponent.constructor()');
-    }
+export class DetailsFilmstudioComponent implements OnInit {
+    @Input()
+    filmstudio: Filmstudio | undefined | '';
 
     ngOnInit() {
-        this.title.setTitle('Beispiel');
+        console.log(`DetailsFilmstudioComponent.filmstudio=${this.filmstudio}`);
     }
 }

@@ -15,25 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { CommonModule } from '@angular/common';
+import { DetailsFilmstudioComponent } from './details-filmstudio.component';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateArtModule } from './update-art.module';
-import { UpdateFilmstudioModule } from './update-filmstudio.module';
-import { UpdateIsbnModule } from './update-isbn.module';
-import { UpdateRatingModule } from './update-rating.module';
-import { UpdateStammdatenComponent } from './update-stammdaten.component';
-import { UpdateTitelModule } from './update-titel.module';
 
 @NgModule({
-    declarations: [UpdateStammdatenComponent],
-    exports: [UpdateStammdatenComponent],
-    imports: [
-        ReactiveFormsModule,
-        UpdateArtModule,
-        UpdateIsbnModule,
-        UpdateRatingModule,
-        UpdateTitelModule,
-        UpdateFilmstudioModule,
-    ],
+    declarations: [DetailsFilmstudioComponent],
+    exports: [DetailsFilmstudioComponent],
+    imports: [CommonModule],
 })
-export class UpdateStammdatenModule {}
+export class DetailsFilmstudioModule {}

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
+ * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,45 +16,36 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 
+import type { Filmstudio } from '../../shared/film';
+import { FormControl } from '@angular/forms';
 import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-update-titel</code>
+ * Komponente f&uuml;r das Tag <code>hs-update-filmstudio</code>
  */
 @Component({
-    selector: 'hs-update-titel',
-    templateUrl: './update-titel.component.html',
+    selector: 'hs-update-filmstudio',
+    templateUrl: './update-filmstudio.component.html',
 })
-export class UpdateTitelComponent implements OnInit {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    private static readonly MIN_LENGTH = 2;
-
-    // <hs-update-titel [form]="form" [currentValue]="...">
+export class UpdateFilmstudioComponent implements OnInit {
+    // <hs-update-filmstudio [form]="form" [currentValue]="...">
     @Input()
     form!: FormGroup;
 
     @Input()
-    currentValue!: string;
+    currentValue: Filmstudio | undefined | '';
 
-    titel!: FormControl;
+    filmstudio!: FormControl;
 
     ngOnInit() {
         console.log(
-            'UpdateTitelComponent.ngOnInit(): currentValue=',
+            'UpdateFilmstudioComponent.ngOnInit(): currentValue=',
             this.currentValue,
         );
         // siehe formControlName innerhalb @Component({templateUrl: ...})
-        this.titel = new FormControl(
-            this.currentValue,
-            Validators.compose([
-                Validators.required,
-                Validators.minLength(UpdateTitelComponent.MIN_LENGTH),
-                Validators.pattern(/^\w/u),
-            ]),
-        );
-        this.form.addControl('titel', this.titel);
+        this.filmstudio = new FormControl(this.currentValue);
+        this.form.addControl('filmstudio', this.filmstudio);
     }
 }

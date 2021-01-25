@@ -17,23 +17,11 @@
 
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateArtModule } from './update-art.module';
-import { UpdateFilmstudioModule } from './update-filmstudio.module';
-import { UpdateIsbnModule } from './update-isbn.module';
-import { UpdateRatingModule } from './update-rating.module';
-import { UpdateStammdatenComponent } from './update-stammdaten.component';
-import { UpdateTitelModule } from './update-titel.module';
+import { UpdateFilmstudioComponent } from './update-filmstudio.component';
 
 @NgModule({
-    declarations: [UpdateStammdatenComponent],
-    exports: [UpdateStammdatenComponent],
-    imports: [
-        ReactiveFormsModule,
-        UpdateArtModule,
-        UpdateIsbnModule,
-        UpdateRatingModule,
-        UpdateTitelModule,
-        UpdateFilmstudioModule,
-    ],
+    declarations: [UpdateFilmstudioComponent],
+    exports: [UpdateFilmstudioComponent],
+    imports: [ReactiveFormsModule],
 })
-export class UpdateStammdatenModule {}
+export class UpdateFilmstudioModule {}

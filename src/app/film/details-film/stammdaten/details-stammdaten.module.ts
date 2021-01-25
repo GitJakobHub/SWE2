@@ -19,11 +19,11 @@ import { CommonModule } from '@angular/common';
 import { DetailsArtModule } from './details-art.module';
 import { DetailsBewertungModule } from './details-bewertung.module';
 import { DetailsDatumModule } from './details-datum.module';
+import { DetailsFilmstudioModule } from './details-filmstudio.module';
 import { DetailsIsbnModule } from './details-isbn.module';
 import { DetailsLieferbarModule } from './details-lieferbar.module';
 import { DetailsPreisModule } from './details-preis.module';
 import { DetailsRabattModule } from './details-rabatt.module';
-import { DetailsRegisseurModule } from './details-regisseur.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
 import { DetailsTitelModule } from './details-titel.module';
 import { NgModule } from '@angular/core';
@@ -41,7 +41,7 @@ import { NgModule } from '@angular/core';
         DetailsPreisModule,
         DetailsRabattModule,
         DetailsTitelModule,
-        DetailsRegisseurModule,
+        DetailsFilmstudioModule,
     ],
 })
 export class DetailsStammdatenModule {}

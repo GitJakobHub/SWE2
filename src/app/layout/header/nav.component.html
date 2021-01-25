@@ -27,7 +27,7 @@
       class="nav-link"
       aria-label="Suche Filme"
     >
-      <i class="material-icons">search</i>
+      <mat-icon>search</mat-icon>
       <span class="ml-1">Suche</span>
     </a>
   </li>
@@ -38,48 +38,9 @@
       class="nav-link"
       aria-label="Neuen Film anlegen"
     >
-      <i class="material-icons">menu_book</i>
+      <mat-icon>movie</mat-icon>
       <span class="ml-1">Neuer Film</span>
     </a>
-  </li>
-
-  <li class="nav-item dropdown" *ngIf="isAdmin">
-    <div
-      class="nav-link dropdown-toggle"
-      id="navbarDropdownMenuLink"
-      data-toggle="dropdown"
-      aria-haspopup="true"
-      aria-expanded="false"
-    >
-      <i class="material-icons">bar_chart</i>
-      <span class="ml-1">Diagramme</span>
-    </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a
-        routerLink="/filme/balkendiagramm"
-        class="dropdown-item"
-        aria-label="Balkendiagramm fuer Bewertungen"
-      >
-        <i class="material-icons">bar_chart</i>
-        <span class="ml-1">Balkendiagramm</span>
-      </a>
-      <a
-        routerLink="/filme/liniendiagramm"
-        class="dropdown-item"
-        aria-label="Liniendiagramm fuer Bewertungen"
-      >
-        <i class="material-icons">multiline_chart</i>
-        <span class="ml-1">Liniendiagramm</span>
-      </a>
-      <a
-        routerLink="/filme/tortendiagramm"
-        class="dropdown-item"
-        aria-label="Tortendiagramm fuer Bewertungen"
-      >
-        <i class="material-icons">pie_chart</i>
-        <span class="ml-1">Tortendiagramm</span>
-      </a>
-    </div>
   </li>
 </ul>
 <hs-login-logout></hs-login-logout>
