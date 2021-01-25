@@ -16,24 +16,24 @@
 -->
 
 <div class="row">
-  <label for="preisInput" class="col col-2 col-form-label gy-3">Preis *</label>
+  <label for="umsatzInput" class="col col-2 col-form-label gy-3">Umsatz *</label>
   <div class="col col-10 gy-3" [formGroup]="form">
     <div class="input-group">
       <input
-        id="preisInput"
-        placeholder="Preis, z.B. 123.45"
+        id="umsatzInput"
+        placeholder="Umsatz, z.B. 123.45"
         required
         class="form-control"
         type="number"
-        formControlName="preis"
-        [class.is-invalid]="preis.invalid && preis.touched"
-        [class.is-valid]="preis.valid && preis.touched"
+        formControlName="umsatz"
+        [class.is-invalid]="umsatz.invalid && umsatz.touched"
+        [class.is-valid]="umsatz.valid && umsatz.touched"
       />
       <span class="input-group-addon ml-1">&#x20ac;</span>
     </div>
 
-    <div *ngIf="preis.invalid && preis.touched" class="invalid-feedback">
-      <div *ngIf="preis.errors && preis.errors.required">
+    <div *ngIf="umsatz.invalid && umsatz.touched" class="invalid-feedback">
+      <div *ngIf="umsatz.errors && umsatz.errors.required">
         <i class="material-icons">error</i>
         <span class="ml-1"
           >Es muss ein Preis festgelegt werden, z.B. 19.99</span

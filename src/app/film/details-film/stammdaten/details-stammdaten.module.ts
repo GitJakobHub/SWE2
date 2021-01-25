@@ -22,10 +22,10 @@ import { DetailsDatumModule } from './details-datum.module';
 import { DetailsFilmstudioModule } from './details-filmstudio.module';
 import { DetailsIsbnModule } from './details-isbn.module';
 import { DetailsLieferbarModule } from './details-lieferbar.module';
-import { DetailsPreisModule } from './details-preis.module';
 import { DetailsRabattModule } from './details-rabatt.module';
 import { DetailsStammdatenComponent } from './details-stammdaten.component';
 import { DetailsTitelModule } from './details-titel.module';
+import { DetailsUmsatzModule } from './details-umsatz.module';
 import { NgModule } from '@angular/core';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { NgModule } from '@angular/core';
         DetailsDatumModule,
         DetailsIsbnModule,
         DetailsLieferbarModule,
-        DetailsPreisModule,
+        DetailsUmsatzModule,
         DetailsRabattModule,
         DetailsTitelModule,
         DetailsFilmstudioModule,

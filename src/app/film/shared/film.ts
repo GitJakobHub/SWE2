@@ -42,7 +42,7 @@ export interface FilmShared {
     titel: string | undefined;
     filmstudio?: Filmstudio | '';
     art: FilmArt;
-    preis: number;
+    umsatz: number;
     rabatt: number | undefined;
     datum?: string;
     lieferbar?: boolean;
@@ -115,7 +115,7 @@ export class Film {
         public art: FilmArt,
         public filmstudio: Filmstudio | undefined | '',
         datum: string | undefined,
-        public preis: number,
+        public umsatz: number,
         public rabatt: number,
         public lieferbar: boolean | undefined,
         public schlagwoerter: string[],
@@ -160,7 +160,7 @@ export class Film {
             filmServer.art,
             filmServer.filmstudio,
             filmServer.datum,
-            filmServer.preis,
+            filmServer.umsatz,
             filmServer.rabatt ?? 0,
             filmServer.lieferbar,
             filmServer.schlagwoerter ?? [],
@@ -195,7 +195,7 @@ export class Film {
             filmForm.art,
             filmForm.filmstudio,
             filmForm.datum,
-            filmForm.preis,
+            filmForm.umsatz,
             rabatt,
             filmForm.lieferbar,
             schlagwoerter,
@@ -262,7 +262,7 @@ export class Film {
      * @param rating Die neue Bewertung
      * @param art Die neue Filmart (2D oder 3D)
      * @param filmstudio Der neue Filmstudio
-     * @param preis Der neue Preis
+     * @param umsatz Der neue Umsatz
      * @param rabatt Der neue Rabatt
      */
     // eslint-disable-next-line max-params
@@ -272,7 +272,7 @@ export class Film {
         filmstudio: Filmstudio | undefined | '',
         rating: number | undefined,
         datum: Date | undefined,
-        preis: number,
+        umsatz: number,
         rabatt: number,
         isbn: string,
     ) {
@@ -285,7 +285,7 @@ export class Film {
                 ? new Array(MAX_RATING - MIN_RATING).fill(false)
                 : new Array(rating - MIN_RATING).fill(true);
         this.datum = datum === undefined ? new Date() : datum;
-        this.preis = preis;
+        this.umsatz = umsatz;
         this.rabatt = rabatt;
         this.isbn = isbn;
     }
@@ -338,7 +338,7 @@ export class Film {
             art: this.art,
             filmstudio: this.filmstudio,
             datum,
-            preis: this.preis,
+            umsatz: this.umsatz,
             rabatt: this.rabatt,
             lieferbar: this.lieferbar,
             schlagwoerter: this.schlagwoerter,

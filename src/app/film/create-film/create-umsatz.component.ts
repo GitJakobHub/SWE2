@@ -16,20 +16,28 @@
  */
 
 import { Component, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+
+import type { FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 
 /**
- * Komponente f&uuml;r das Tag <code>hs-details-preis</code>
+ * Komponente mit dem Tag &lt;hs-create-umsatz&gt;, um das Erfassungsformular
+ * f&uuml;r einen neuen Film zu realisieren.
  */
 @Component({
-    selector: 'hs-details-preis',
-    templateUrl: './details-preis.component.html',
+    selector: 'hs-create-umsatz',
+    templateUrl: './create-umsatz.component.html',
 })
-export class DetailsPreisComponent implements OnInit {
+export class CreateUmsatzComponent implements OnInit {
     @Input()
-    preis!: number | '';
+    form!: FormGroup;
+
+    readonly umsatz = new FormControl(undefined, Validators.required);
 
     ngOnInit() {
-        console.log(`DetailsPreisComponent.preis=${this.preis}`);
+        console.log('CreateUmsatzComponent.ngOnInit');
+        // siehe formControlName innerhalb @Component({templateUrl: ...})
+        this.form.addControl('umsatz', this.umsatz);
     }
 }

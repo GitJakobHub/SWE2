@@ -16,13 +16,13 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { CreatePreisComponent } from './create-preis.component';
+import { CreateUmsatzComponent } from './create-umsatz.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    declarations: [CreatePreisComponent],
-    exports: [CreatePreisComponent],
+    declarations: [CreateUmsatzComponent],
+    exports: [CreateUmsatzComponent],
     imports: [CommonModule, ReactiveFormsModule],
 })
-export class CreatePreisModule {}
+export class CreateUmsatzModule {}

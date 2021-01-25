@@ -71,14 +71,14 @@ export class UpdateStammdatenComponent implements OnInit {
             return;
         }
 
-        // rating, preis und rabatt koennen im Formular nicht geaendert werden
+        // rating, umsatz und rabatt koennen im Formular nicht geaendert werden
         this.film.updateStammdaten(
             this.form.value.titel,
             this.form.value.art,
             this.form.value.filmstudio,
             this.form.value.rating,
             this.film.datum,
-            this.film.preis,
+            this.film.umsatz,
             this.film.rabatt,
             this.form.value.isbn,
         );
