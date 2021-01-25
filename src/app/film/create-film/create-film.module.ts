@@ -22,11 +22,11 @@ import { CreateFilmComponent } from './create-film.component';
 import { CreateFilmstudioModule } from './create-filmstudio.module';
 import { CreateIsbnModule } from './create-isbn.module';
 import { CreateLieferbarModule } from './create-lieferbar.module';
-import { CreatePreisModule } from './create-preis.module';
 import { CreateRabattModule } from './create-rabatt.module';
 import { CreateRatingModule } from './create-rating.module';
 import { CreateSchlagwoerterModule } from './create-schlagwoerter.module';
 import { CreateTitelModule } from './create-titel.module';
+import { CreateUmsatzModule } from './create-umsatz.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -48,7 +48,7 @@ import { Title } from '@angular/platform-browser';
         CreateDatumModule,
         CreateIsbnModule,
         CreateLieferbarModule,
-        CreatePreisModule,
+        CreateUmsatzModule,
         CreateRabattModule,
         CreateRatingModule,
         CreateSchlagwoerterModule,

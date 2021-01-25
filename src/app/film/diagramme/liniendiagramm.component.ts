@@ -61,8 +61,8 @@ export class LiniendiagrammComponent implements OnInit {
             // eslint-disable-next-line rxjs/no-ignored-error
             .subscribe(filmItems => {
                 const bewertungItems = this.getBewertungItems(filmItems);
-                const preisItems = this.getPreisItems(filmItems);
-                this.initSeries(bewertungItems, preisItems);
+                const umsatzItems = this.getUmsatzItems(filmItems);
+                this.initSeries(bewertungItems, umsatzItems);
             });
     }
 
@@ -77,25 +77,25 @@ export class LiniendiagrammComponent implements OnInit {
         });
     }
 
-    private getPreisItems(filme: Film[]) {
+    private getUmsatzItems(filme: Film[]) {
         return filme.map(film => {
-            const preisItem: DataItem = {
+            const umsatzItem: DataItem = {
                 name: film._id as string,
-                value: film.preis,
+                value: film.umsatz,
             };
-            return preisItem;
+            return umsatzItem;
         });
     }
 
-    private initSeries(bewertungItems: DataItem[], preisItems: DataItem[]) {
+    private initSeries(bewertungItems: DataItem[], umsatzItems: DataItem[]) {
         const series: MultiSeries = [
             {
                 name: 'Bewertungen',
                 series: bewertungItems,
             },
             {
-                name: 'Preise',
-                series: preisItems,
+                name: 'Umsatze',
+                series: umsatzItems,
             },
         ];
 
