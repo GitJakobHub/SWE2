@@ -18,33 +18,39 @@
   <div class="row">
     <div class="col gy-3">
       <div class="checkbox">
-        <input
+        <mat-checkbox
+          color="primary"
           type="checkbox"
           id="javascriptInput"
           formControlName="javascript"
-        />
-        <label for="javascriptInput">JavaScript</label>
+          for="javascriptInput"
+        >
+        Thriller
+        </mat-checkbox>
       </div>
       <div class="checkbox">
-        <input
+        <mat-checkbox
+          color="primary"
           type="checkbox"
           id="typescriptInput"
           formControlName="typescript"
-        />
-        <label for="typescriptInput">TypeScript</label>
+          for="typescriptInput"
+        >
+        Komödie
+        </mat-checkbox>
       </div>
     </div>
   </div>
 
   <div class="row gy-3">
     <div class="col">
-      <button
+      <button mat-raised-button color="primary"
         type="submit"
         class="btn btn-primary"
         (click)="onUpdate()"
         [disabled]="form.pristine || form.invalid"
       >
-        <i class="material-icons">check</i>
+        <mat-icon>update</mat-icon>
         <span class="ml-1">Schlagw&ouml;rter aktualisieren</span>
       </button>
     </div>

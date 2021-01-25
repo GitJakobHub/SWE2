@@ -18,6 +18,9 @@
 import { CommonModule } from '@angular/common';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { UpdateFilmComponent } from './update-film.component';
@@ -33,6 +36,9 @@ import { UpdateStammdatenModule } from './stammdaten/update-stammdaten.module';
         ErrorMessageModule,
         UpdateSchlagwoerterModule,
         UpdateStammdatenModule,
+        MatButtonModule,
+        MatIconModule,
+        MatCardModule,
     ],
     providers: [Title],
 })

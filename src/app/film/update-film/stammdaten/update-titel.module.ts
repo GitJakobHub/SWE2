@@ -16,6 +16,7 @@
  */
 
 import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -24,6 +25,6 @@ import { UpdateTitelComponent } from './update-titel.component';
 @NgModule({
     declarations: [UpdateTitelComponent],
     exports: [UpdateTitelComponent],
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, MatInputModule],
 })
 export class UpdateTitelModule {}

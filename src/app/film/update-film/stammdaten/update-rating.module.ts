@@ -15,6 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { MatSliderModule } from '@angular/material/slider';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -23,6 +24,6 @@ import { UpdateRatingComponent } from './update-rating.component';
 @NgModule({
     declarations: [UpdateRatingComponent],
     exports: [UpdateRatingComponent],
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, MatSliderModule],
 })
 export class UpdateRatingModule {}

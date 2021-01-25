@@ -19,28 +19,30 @@
   <label for="isbnInput" class="col col-2 col-form-label gy-3"> ISBN </label>
 
   <div class="col col-10 gy-3" [formGroup]="form">
-    <div class="input-group">
-      <input
-        id="isbnInput"
-        placeholder="ISBN"
-        class="form-control"
-        autofocus
-        formControlName="isbn"
-        [class.is-invalid]="isbn.invalid && isbn.dirty"
-        [class.is-valid]="isbn.valid && isbn.dirty"
-      />
-
-      <div *ngIf="isbn.invalid && isbn.touched" class="invalid-feedback">
-        <div
-          *ngIf="isbn.errors && (isbn.errors.required || isbn.errors.pattern)"
-        >
-          <i class="material-icons">error</i>
-          <span class="ml-1">
-            Eine g&uuml;ltige ISBN-Nummer, z.B. 3-89722-583-2, muss eingegeben
-            werden .
-          </span>
+    <mat-form-field style="width: 100%;" class="input-group">
+      <mat-label>ISBN</mat-label>
+      <div class="input-group">
+        <input matInput
+          id="isbnInput"
+          placeholder="ISBN"
+          autofocus
+          formControlName="isbn"
+          [class.is-invalid]="isbn.invalid && isbn.dirty"
+          [class.is-valid]="isbn.valid && isbn.dirty"
+        />
+  
+        <div *ngIf="isbn.invalid && isbn.touched" class="invalid-feedback">
+          <div
+            *ngIf="isbn.errors && (isbn.errors.required || isbn.errors.pattern)"
+          >
+            <i class="material-icons">error</i>
+            <span class="ml-1">
+              Eine g&uuml;ltige ISBN-Nummer, z.B. 3-89722-583-2, muss eingegeben
+              werden .
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </mat-form-field>
   </div>
 </div>
