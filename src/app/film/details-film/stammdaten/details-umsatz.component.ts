@@ -28,9 +28,10 @@ import type { OnInit } from '@angular/core';
 })
 export class DetailsUmsatzComponent implements OnInit {
     @Input()
-    umsatz!: number | '';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    umsatz!: any | '';
 
     ngOnInit() {
         console.log(`DetailsUmsatzComponent.umsatz=${this.umsatz}`);
-    }
+        }
 }

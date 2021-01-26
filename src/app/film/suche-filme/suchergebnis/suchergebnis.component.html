@@ -59,7 +59,8 @@
               <td (click)="onClick(b)">{{ i + 1 }}</td>
               <td (click)="onClick(b)">{{ b._id }}</td>
               <td (click)="onClick(b)">{{ b.titel }}</td>
-              <td>
+              <td (click)="onClick(b)">{{ b.filmstudio }}</td>
+              <!--<td>
                 <span [ngSwitch]="b.filmstudio">
                   <span *ngSwitchCase="'UNIVERSAL_STUDIOSLAG'"
                     >Universal Studios</span
@@ -67,7 +68,7 @@
                   <span *ngSwitchCase="'WARNER_BROS'">Warner Bros.</span>
                   <span *ngSwitchDefault>unbekannt</span>
                 </span>
-              </td>
+              </td>-->
               <td (click)="onClick(b)">
                 <span *ngFor="let sw of b.schlagwoerter">
                   <span [ngSwitch]="sw">

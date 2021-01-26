@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable max-lines */
 
 /*
@@ -65,6 +66,19 @@ interface Link {
  */
 export interface FilmServer extends FilmShared {
     rating?: number;
+    username?: string;
+    familienstand?: string;
+    geschlecht?: string;
+    geburtsdatum?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    adresse?: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    umsatz: any;
+    interessen?: string[];
+    homepage?: string;
+    email?: string;
+    bewertung?: number;
+    newsletter?: boolean;
     schlagwoerter?: string[];
     // eslint-disable-next-line @typescript-eslint/naming-convention
     _links?: {
@@ -334,16 +348,34 @@ export class Film {
         return {
             _id: this._id, // eslint-disable-line @typescript-eslint/naming-convention
             titel: this.titel,
-            rating: this.rating,
             art: this.art,
-            filmstudio: this.filmstudio,
+            rating: this.rating,
+            // email: `test${Math.random()}@test.de`,
+            "email": "Theo@Test.de.put",
+            username: this.filmstudio,
             datum,
-            umsatz: this.umsatz,
             rabatt: this.rabatt,
-            lieferbar: this.lieferbar,
             schlagwoerter: this.schlagwoerter,
             isbn: this.isbn,
-        };
+                "bewertung": 1,
+                "newsletter": true,
+                "geburtsdatum": "2017-01-31",
+                "umsatz": {
+                    "betrag": 0,
+                    "waehrung": "EUR",
+                },
+                "homepage": "https://www.test.de",
+                "geschlecht": "W",
+                "familienstand": "L",
+                "interessen": [
+                    "R",
+                    "L",
+                ],
+                "adresse": {
+                    "plz": "12345",
+                    "ort": "Testort",
+                },
+            };
     }
 
     toString() {

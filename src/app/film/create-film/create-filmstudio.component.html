@@ -26,12 +26,12 @@
         [class.is-valid]="filmstudio.valid && filmstudio.touched"
       >
         <mat-label>Auswählen</mat-label>
-        <mat-select>
+        <mat-select         formControlName="filmstudio"        >
           <mat-option> </mat-option>
-          <mat-option value="UNIVERSAL_STUDIOSLAG"
+          <mat-option value="Universal Studios"
             >Universal Studios</mat-option
           >
-          <mat-option value="WARNER_BROS">Warner Bros.</mat-option>
+          <mat-option value="Warner Bros.">Warner Bros.</mat-option>
         </mat-select>
       </mat-form-field>
 

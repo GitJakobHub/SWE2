@@ -140,7 +140,11 @@ export class FilmService {
             return result;
         }
         console.log('result', result);
-        const filme = result.map(film => Film.fromServer(film));
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const filme = result.map((film: any) => {
+            film.filmstudio = film.username;
+            return Film.fromServer(film);
+        });
         console.log('FilmService.mapFindResult(): filme=', filme);
         return filme;
     }
@@ -189,7 +193,12 @@ export class FilmService {
                     }),
 
                     // entweder Observable<HttpResponse<FilmServer>> oder Observable<FindError>
-                    map(result => this.findByIdResultToFilm(result)),
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    map((result: any) => {
+                        result.body.filmstudio = result.body.username;
+                        console.log('-----------', result)
+                        return this.findByIdResultToFilm(result);
+                    }),
                 )
         );
     }
