@@ -16,10 +16,13 @@
 -->
 
 <div class="row">
-  <label for="isbnInput" class="col col-2 col-form-label gy-3"> Film-ID* </label>
+  <label for="isbnInput" class="col col-2 col-form-label gy-3">
+    Film-ID*
+  </label>
   <div class="col col-10 gy-3" [formGroup]="form">
-    <mat-form-field style="width: 100%;" class="input-group">
-      <input matInput
+    <mat-form-field style="width: 100%" class="input-group">
+      <input
+        matInput
         id="isbnInput"
         placeholder="Film-ID, z.B. 3-89722-583-2"
         required
