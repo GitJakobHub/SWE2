@@ -15,10 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { FilmService, UpdateError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Component, Input } from '@angular/core';
+import { FilmService, UpdateError } from '../../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { FormControl, FormGroup } from '@angular/forms';
 import { HOME_PATH, HttpStatus } from '../../../shared';
+
 import type { Film } from '../../shared';
 import { HttpErrorResponse } from '@angular/common/http';
 import type { OnInit } from '@angular/core';

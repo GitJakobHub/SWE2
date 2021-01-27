@@ -16,11 +16,12 @@
  */
 
 import { first, tap } from 'rxjs/operators';
+
 import { ActivatedRoute } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { AuthService } from '../../auth/auth.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { Component } from '@angular/core';
 import type { Film } from '../shared';
 import { FilmService } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
-import { Component } from '@angular/core';
 import { FindError } from './../shared/errors';
 import { HttpStatus } from '../../shared';
 import type { OnInit } from '@angular/core';

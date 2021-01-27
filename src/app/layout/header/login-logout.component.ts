@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
 import { HOME_PATH } from '../../shared';
 import { Observable } from 'rxjs';
 import type { OnInit } from '@angular/core';
-import { Router } from '@angular/router';   
+import { Router } from '@angular/router';
 
 /**
  * Komponente f&uuml;r das Login mit dem Tag &lt;hs-login-logout&gt;.
