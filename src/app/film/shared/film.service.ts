@@ -196,7 +196,7 @@ export class FilmService {
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     map((result: any) => {
                         result.body.filmstudio = result.body.username;
-                        console.log('-----------', result)
+                        console.log('-----------', result);
                         return this.findByIdResultToFilm(result);
                     }),
                 )
