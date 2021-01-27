@@ -16,16 +16,16 @@
 -->
 
 <div class="row">
-  <label for="isbnInput" class="col col-2 col-form-label gy-3"> ISBN </label>
+  <label for="isbnInput" class="col col-2 col-form-label gy-3"> Film-ID </label>
 
   <div class="col col-10 gy-3" [formGroup]="form">
-    <mat-form-field style="width: 100%" class="input-group">
-      <mat-label>ISBN</mat-label>
+    <mat-form-field style="width: 100%;" class="input-group">
+      <mat-label>Film-ID</mat-label>
       <div class="input-group">
         <input
           matInput
           id="isbnInput"
-          placeholder="ISBN"
+          placeholder="Film-ID"
           autofocus
           formControlName="isbn"
           [class.is-invalid]="isbn.invalid && isbn.dirty"
@@ -38,7 +38,7 @@
           >
             <i class="material-icons">error</i>
             <span class="ml-1">
-              Eine g&uuml;ltige ISBN-Nummer, z.B. 3-89722-583-2, muss eingegeben
+              Eine g&uuml;ltige Film-ID, z.B. 3-89722-583-2, muss eingegeben
               werden .
             </span>
           </div>

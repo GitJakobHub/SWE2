@@ -41,3 +41,35 @@ export class CreateRabattComponent implements OnInit {
         this.form.addControl('rabatt', this.rabatt);
     }
 }
+
+/*
+<div class="row">
+  <label for="rabattInput" class="col col-2 col-form-label gy-3"
+    >Rabatt *</label
+  >
+  <div class="col col-10 gy-3" [formGroup]="form">
+    <div class="input-group">
+      <input
+        id="rabattInput"
+        placeholder="Rabatt in Prozent, z.B. 10.00"
+        required
+        type="number"
+        class="form-control"
+        formControlName="rabatt"
+        [class.is-invalid]="rabatt.invalid && rabatt.touched"
+        [class.is-valid]="rabatt.valid && rabatt.touched"
+      />
+      <span class="input-group-addon ml-1">%</span>
+    </div>
+
+    <div *ngIf="rabatt.invalid && rabatt.touched" class="invalid-feedback">
+      <div *ngIf="rabatt.errors && rabatt.errors.required">
+        <i class="material-icons">error</i>
+        <span class="ml-1">
+          Der Rabatt muss als Prozentwert eigegebenen werden, z.B. 10.00
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+*/
