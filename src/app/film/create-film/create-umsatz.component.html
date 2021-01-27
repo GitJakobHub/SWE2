@@ -20,19 +20,17 @@
     >Preis *</label
   >
   <div class="col col-10 gy-3" [formGroup]="form">
-    <div class="input-group">
-      <input
+    <mat-form-field style="width: 100%;" class="input-group">
+      <input matInput
         id="umsatzInput"
         placeholder="Preis, z.B. 123.45"
         required
-        class="form-control"
         type="number"
         formControlName="umsatz"
         [class.is-invalid]="umsatz.invalid && umsatz.touched"
         [class.is-valid]="umsatz.valid && umsatz.touched"
       />
-      <span class="input-group-addon ml-1">&#x20ac;</span>
-    </div>
+    </mat-form-field>
 
     <div *ngIf="umsatz.invalid && umsatz.touched" class="invalid-feedback">
       <div *ngIf="umsatz.errors && umsatz.errors.required">

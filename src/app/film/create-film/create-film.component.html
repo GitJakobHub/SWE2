@@ -68,13 +68,12 @@
                                               oder on-click="onSave"
                            [disabled]="..." fuer Input = Property Binding
                     -->
-          <button
+          <button mat-raised-button
+            color="primary"
             type="submit"
-            class="btn btn-primary"
             (click)="onSave()"
-            [disabled]="form.invalid"
           >
-            <i class="material-icons">check</i>
+            <mat-icon>check</mat-icon>
             <span class="ml-1">Film hinzufügen</span>
           </button>
         </div>

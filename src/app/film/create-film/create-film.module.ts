@@ -29,6 +29,8 @@ import { CreateTitelModule } from './create-titel.module';
 import { CreateUmsatzModule } from './create-umsatz.module';
 import { ErrorMessageModule } from '../../shared/error-message.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
@@ -55,6 +57,8 @@ import { Title } from '@angular/platform-browser';
         CreateTitelModule,
         CreateFilmstudioModule,
         ErrorMessageModule,
+        MatButtonModule,
+        MatIconModule,
     ],
     providers: [Title],
 })

@@ -15,6 +15,20 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div>
-
+<div class="row">
+  <label for="rabattInput" class="col col-2 col-form-label gy-3"
+    >Rabatt *</label
+  >
+  <div class="col col-10 gy-3" [formGroup]="form">
+    <mat-form-field style="width: 100%;" class="input-group">
+      <input matInput
+        id="rabattInput"
+        placeholder="Rabatt in Prozent, z.B. 10.00"
+        required
+        type="number"
+        formControlName="rabatt"
+        [class.is-invalid]="rabatt.invalid && rabatt.touched"
+        [class.is-valid]="rabatt.valid && rabatt.touched"
+      />
+    </mat-form-field>
 </div>

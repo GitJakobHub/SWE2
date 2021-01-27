@@ -16,12 +16,13 @@
  */
 
 import { CreateRatingComponent } from './create-rating.component';
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateRatingComponent],
     exports: [CreateRatingComponent],
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, MatSelectModule],
 })
 export class CreateRatingModule {}
