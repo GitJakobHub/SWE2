@@ -20,19 +20,17 @@
     >Rabatt *</label
   >
   <div class="col col-10 gy-3" [formGroup]="form">
-    <div class="input-group">
-      <input
+    <mat-form-field style="width: 100%;" class="input-group">
+      <input matInput
         id="rabattInput"
         placeholder="Rabatt in Prozent, z.B. 10.00"
         required
         type="number"
-        class="form-control"
         formControlName="rabatt"
         [class.is-invalid]="rabatt.invalid && rabatt.touched"
         [class.is-valid]="rabatt.valid && rabatt.touched"
       />
-      <span class="input-group-addon ml-1">%</span>
-    </div>
+    </mat-form-field>
 
     <div *ngIf="rabatt.invalid && rabatt.touched" class="invalid-feedback">
       <div *ngIf="rabatt.errors && rabatt.errors.required">

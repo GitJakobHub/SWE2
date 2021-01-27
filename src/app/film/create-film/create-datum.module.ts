@@ -16,12 +16,13 @@
  */
 
 import { CreateDatumComponent } from './create-datum.component';
+import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateDatumComponent],
     exports: [CreateDatumComponent],
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, MatInputModule],
 })
 export class CreateDatumModule {}

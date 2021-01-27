@@ -18,17 +18,22 @@
 <div class="row">
   <label class="col col-2 col-form-label gy-3">Bewertung</label>
   <div class="col col-10 gy-3" [formGroup]="form">
-    <select class="form-select" formControlName="rating">
-      <option value="">Bewertung ausw&auml;hlen</option>
-      <optgroup label="Hoch"><option value="5">5</option></optgroup>
-      <optgroup label="Mittel">
-        <option value="4">4</option>
-        <option value="3">3</option>
-      </optgroup>
-      <optgroup label="Niedrig">
-        <option value="2">2</option>
-        <option value="1">1</option>
-      </optgroup>
-    </select>
+    <mat-form-field
+      appearance="fill"
+    >
+      <mat-label>Bewertung auswähen</mat-label>
+      <mat-select formControlName="rating">
+        <mat-option value="">Bewertung ausw&auml;hlen</mat-option>
+        <mat-optgroup label="Hoch"><option value="5">5</option></mat-optgroup>
+        <mat-optgroup label="Mittel">
+          <mat-option value="4">4</mat-option>
+          <mat-option value="3">3</mat-option>
+        </mat-optgroup>
+        <mat-optgroup label="Niedrig">
+          <mat-option value="2">2</mat-option>
+          <mat-option value="1">1</mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>

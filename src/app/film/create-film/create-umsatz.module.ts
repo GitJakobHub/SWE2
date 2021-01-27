@@ -16,12 +16,13 @@
 
 import { CommonModule } from '@angular/common';
 import { CreateUmsatzComponent } from './create-umsatz.component';
+import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateUmsatzComponent],
     exports: [CreateUmsatzComponent],
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, MatInputModule],
 })
 export class CreateUmsatzModule {}

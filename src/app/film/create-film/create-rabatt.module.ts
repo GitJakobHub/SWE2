@@ -17,12 +17,13 @@
 
 import { CommonModule } from '@angular/common';
 import { CreateRabattComponent } from './create-rabatt.component';
+import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CreateRabattComponent],
     exports: [CreateRabattComponent],
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, MatInputModule],
 })
 export class CreateRabattModule {}

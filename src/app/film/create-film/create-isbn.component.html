@@ -18,11 +18,10 @@
 <div class="row">
   <label for="isbnInput" class="col col-2 col-form-label gy-3"> ISBN * </label>
   <div class="col col-10 gy-3" [formGroup]="form">
-    <div class="input-group">
-      <input
+    <mat-form-field style="width: 100%;" class="input-group">
+      <input matInput
         id="isbnInput"
         placeholder="ISBN-Nummer, z.B. 3-89722-583-2"
-        class="form-control"
         required
         minlength="2"
         formControlName="isbn"
@@ -45,6 +44,6 @@
           </span>
         </div>
       </div>
-    </div>
+    </mat-form-field>
   </div>
 </div>
