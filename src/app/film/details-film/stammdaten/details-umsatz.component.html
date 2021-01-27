@@ -17,5 +17,7 @@
 
 <div class="row mt-2">
   <label class="col col-1"> Preis </label>
-  <div class="col col-11" *ngIf="umsatz">{{ umsatz.betrag }} {{umsatz.waehrung}}</div>
+  <div class="col col-11" *ngIf="umsatz">
+    {{ umsatz.betrag }} {{ umsatz.waehrung }}
+  </div>
 </div>

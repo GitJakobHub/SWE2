@@ -1,7 +1,4 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable prettier/prettier */
 /* eslint-disable max-lines */
-
 /*
  * Copyright (C) 2015 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -352,31 +349,28 @@ export class Film {
             art: this.art,
             rating: this.rating,
             // email: `test${Math.random()}@test.de`,
-            "email": "Theo@Test.de.put",
+            email: 'Theo@Test.de.put',
             username: this.filmstudio,
             datum,
             rabatt: this.rabatt,
             schlagwoerter: this.schlagwoerter,
             isbn: this.isbn,
-                "bewertung": 1,
-                "newsletter": true,
-                "geburtsdatum": "2017-01-31",
-                "umsatz": {
-                    "betrag": 0,
-                    "waehrung": "EUR",
-                },
-                "homepage": "https://www.test.de",
-                "geschlecht": "W",
-                "familienstand": "L",
-                "interessen": [
-                    "R",
-                    "L",
-                ],
-                "adresse": {
-                    "plz": "12345",
-                    "ort": "Testort",
-                },
-            };
+            bewertung: 1,
+            newsletter: true,
+            geburtsdatum: '2017-01-31',
+            umsatz: {
+                betrag: 0,
+                waehrung: 'EUR',
+            },
+            homepage: 'https://www.test.de',
+            geschlecht: 'W',
+            familienstand: 'L',
+            interessen: ['R', 'L'],
+            adresse: {
+                plz: '12345',
+                ort: 'Testort',
+            },
+        };
     }
 
     toString() {

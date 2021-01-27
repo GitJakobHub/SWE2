@@ -17,75 +17,75 @@
 <mat-card>
   <hs-waiting *ngIf="waiting; else details"></hs-waiting>
 
-<ng-template #details>
-  <hs-details-breadcrumbs></hs-details-breadcrumbs>
+  <ng-template #details>
+    <hs-details-breadcrumbs></hs-details-breadcrumbs>
 
-  <section class="mt-1" *ngIf="film; else showErrorMsg">
-    <h4>Film {{ film._id }}:</h4>
+    <section class="mt-1" *ngIf="film; else showErrorMsg">
+      <h4>Film {{ film._id }}:</h4>
 
-    <!-- https://v5.getbootstrap.com/docs/5.0/components/navs/#tabs -->
-    <!-- jQuery erfordert id -->
-    <ul class="nav nav-tabs mt-1" id="kundeDetails">
-      <li class="nav-item">
-        <a
-          class="nav-link active"
-          id="stammdaten-tab"
-          href="#stammdaten"
-          data-toggle="tab"
-          role="tab"
-          aria-controls="stammdaten"
-          aria-expanded="true"
+      <!-- https://v5.getbootstrap.com/docs/5.0/components/navs/#tabs -->
+      <!-- jQuery erfordert id -->
+      <ul class="nav nav-tabs mt-1" id="kundeDetails">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="stammdaten-tab"
+            href="#stammdaten"
+            data-toggle="tab"
+            role="tab"
+            aria-controls="stammdaten"
+            aria-expanded="true"
+          >
+            Stammdaten
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="film.hasSchlagwoerter()">
+          <a
+            class="nav-link"
+            id="schlagwoerter-tab"
+            href="#schlagwoerter"
+            data-toggle="tab"
+            role="tab"
+            aria-controls="schlagwoerter"
+            aria-expanded="true"
+          >
+            Schlagw&ouml;rter
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="kundeContent">
+        <div
+          class="tab-pane fade show active"
+          id="stammdaten"
+          role="tabpanel"
+          aria-labelledby="stammdaten-tab"
         >
-          Stammdaten
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="film.hasSchlagwoerter()">
-        <a
-          class="nav-link"
-          id="schlagwoerter-tab"
-          href="#schlagwoerter"
-          data-toggle="tab"
-          role="tab"
-          aria-controls="schlagwoerter"
-          aria-expanded="true"
-        >
-          Schlagw&ouml;rter
-        </a>
-      </li>
-    </ul>
+          <div class="mt-2">
+            <hs-details-stammdaten [film]="film"> </hs-details-stammdaten>
+          </div>
+        </div>
 
-    <div class="tab-content" id="kundeContent">
-      <div
-        class="tab-pane fade show active"
-        id="stammdaten"
-        role="tabpanel"
-        aria-labelledby="stammdaten-tab"
-      >
-        <div class="mt-2">
-          <hs-details-stammdaten [film]="film"> </hs-details-stammdaten>
+        <div
+          class="tab-pane fade"
+          id="schlagwoerter"
+          role="tabpanel"
+          aria-labelledby="schlagwoerter-tab"
+          *ngIf="film.hasSchlagwoerter()"
+        >
+          <div class="mt-2">
+            <hs-details-schlagwoerter [values]="film.schlagwoerter">
+            </hs-details-schlagwoerter>
+          </div>
         </div>
       </div>
 
-      <div
-        class="tab-pane fade"
-        id="schlagwoerter"
-        role="tabpanel"
-        aria-labelledby="schlagwoerter-tab"
-        *ngIf="film.hasSchlagwoerter()"
-      >
-        <div class="mt-2">
-          <hs-details-schlagwoerter [values]="film.schlagwoerter">
-          </hs-details-schlagwoerter>
-        </div>
-      </div>
-    </div>
+      <hs-details-bearbeiten [id]="film._id" *ngIf="isAdmin">
+      </hs-details-bearbeiten>
+    </section>
 
-    <hs-details-bearbeiten [id]="film._id" *ngIf="isAdmin">
-    </hs-details-bearbeiten>
-  </section>
-
-  <ng-template #showErrorMsg>
-    <hs-error-message [text]="errorMsg"></hs-error-message>
+    <ng-template #showErrorMsg>
+      <hs-error-message [text]="errorMsg"></hs-error-message>
+    </ng-template>
   </ng-template>
-</ng-template>
 </mat-card>

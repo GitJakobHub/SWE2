@@ -19,10 +19,11 @@
   <label for="isbnInput" class="col col-2 col-form-label gy-3"> ISBN </label>
 
   <div class="col col-10 gy-3" [formGroup]="form">
-    <mat-form-field style="width: 100%;" class="input-group">
+    <mat-form-field style="width: 100%" class="input-group">
       <mat-label>ISBN</mat-label>
       <div class="input-group">
-        <input matInput
+        <input
+          matInput
           id="isbnInput"
           placeholder="ISBN"
           autofocus
@@ -30,7 +31,7 @@
           [class.is-invalid]="isbn.invalid && isbn.dirty"
           [class.is-valid]="isbn.valid && isbn.dirty"
         />
-  
+
         <div *ngIf="isbn.invalid && isbn.touched" class="invalid-feedback">
           <div
             *ngIf="isbn.errors && (isbn.errors.required || isbn.errors.pattern)"
