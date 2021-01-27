@@ -16,15 +16,19 @@
  */
 
 import { BASE_URI, HttpStatus } from '../shared';
+
 import { CookieService } from './cookie.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class JwtService {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     private static readonly MILLIS_PER_SECOND = 1000;
 
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     private static readonly SECOND_PER_MINUTE = 60;
 
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     private static readonly TIMEZONE_OFFSET_MS =
         new Date().getTimezoneOffset() *
         JwtService.SECOND_PER_MINUTE *

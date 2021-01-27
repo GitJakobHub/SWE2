@@ -17,9 +17,10 @@
 
 import { FilmService, FindError } from '../shared'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { first, tap } from 'rxjs/operators';
+
 import { ActivatedRoute } from '@angular/router'; // eslint-disable-line @typescript-eslint/consistent-type-imports
-import type { Film } from '../shared';
 import { Component } from '@angular/core';
+import type { Film } from '../shared';
 import { HttpStatus } from '../../shared';
 import type { OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser'; // eslint-disable-line @typescript-eslint/consistent-type-imports

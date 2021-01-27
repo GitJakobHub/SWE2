@@ -16,9 +16,9 @@
  */
 
 import { BalkendiagrammModule } from './diagramme/balkendiagramm.module';
-import { FilmRoutingModule } from './film-routing.module';
 import { CreateFilmModule } from './create-film/create-film.module';
 import { DetailsFilmModule } from './details-film/details-film.module';
+import { FilmRoutingModule } from './film-routing.module';
 import { LiniendiagrammModule } from './diagramme/liniendiagramm.module';
 import { NgModule } from '@angular/core';
 import { SucheFilmeModule } from './suche-filme/suche-filme.module';

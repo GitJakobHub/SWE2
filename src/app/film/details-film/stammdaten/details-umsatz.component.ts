@@ -32,6 +32,7 @@ export class DetailsUmsatzComponent implements OnInit {
     umsatz!: any | '';
 
     ngOnInit() {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         console.log(`DetailsUmsatzComponent.umsatz=${this.umsatz}`);
-        }
+    }
 }
