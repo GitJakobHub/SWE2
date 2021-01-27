@@ -22,7 +22,8 @@ $gradient: url('/assets/img/header.jpg');
   background-color: $background-color;
   background-image: $gradient;
   background-position: left top;
-  background-repeat: no-repeat;
+  background-size: 100%;
+  // background-repeat: no-repeat;
   // display: block;
 }
 
