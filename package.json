@@ -33,7 +33,7 @@
     "sonarqube": "ts-node --script-mode scripts/sonarqube",
     "presource-map-explorer": "npm run build:prod -- --source-map",
     "source-map-explorer": "npx source-map-explorer dist/acme/*-es2015*.js* --html source-map-explorer.html",
-    "stylelint": "npx stylelint src/app/**/*.scss",
+    "stylelint": "stylelint src/app/**/*.scss",
     "webhint": "hint https://localhost:4200",
     "prewebpack-bundle-analyzer": "npm run build:prod -- --stats-json",
     "webpack-bundle-analyzer": "npx webpack-bundle-analyzer dist/acme/stats.json dist/acme",
